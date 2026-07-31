@@ -10,23 +10,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: docker.io/texlive/texlive:latest
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Repository auschecken
-        uses: actions/checkout@v4
-
-      - name: latexmk installieren
-        run: |
-          tlmgr install latexmk
+        uses: actions/checkout@v7
 
       - name: LaTeX-Dokument kompilieren
-        run: |
-          latexmk -pdf -interaction=nonstopmode Bauphysik_Formelsammlung.tex
-
-      - name: Git installieren
-        run: |
-          apt-get update && apt-get install -y git
+        uses: xu-cheng/texlive-action@v3
+        with:
+          # Vollständige TeX Live Installation (alle Pakete)
+          scheme: full
+          # Optional: Version festlegen, z.B. 2024, sonst neueste
+          # texlive_version: 2024
+          commands: |
+            latexmk -pdf -interaction=nonstopmode Bauphysik_Formelsammlung.tex
 
       - name: PDF committen und pushen
         run: |
