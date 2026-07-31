@@ -10,16 +10,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Verhindert, dass der Workflow erneut durch den eigenen Push mit [skip ci] gestartet wird
+    container: docker.io/texlive/texlive:latest
     if: "! contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
-
-      - name: LaTeX installieren
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-latex-recommended
 
       - name: LaTeX-Dokument kompilieren
         run: |
