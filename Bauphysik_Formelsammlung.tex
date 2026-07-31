@@ -58,9 +58,6 @@
     range-units=single
 ]{siunitx}
 
-\usepackage{physics}
-\AtBeginDocument{\RenewCommandCopy\qty\SI}
-
 \providecommand{\eh}[1]{\,[\unit{#1}]}
 \newcommand{\gradC}{\,\eh{\degree C}}
 
@@ -75,23 +72,26 @@
     enhanced,
     colback=white,
     colframe=blue!35!black,
-    colbacktitle=blue!5!white,
+    colbacktitle=blue!8!white,
     coltitle=blue!85!black,
-    fonttitle=\bfseries\sffamily,
-    fontlower=\footnotesize,
+    fonttitle=\bfseries\sffamily\small,
+    fontupper=\small,
+    fontlower=\small,
     title={#1},
     boxrule=0.8pt,
-    arc=4pt,
-    left=6pt, right=6pt, top=4pt, bottom=4pt,
-    boxsep=0pt,
+    arc=3pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    boxsep=1pt,
     toptitle=4pt, bottomtitle=4pt,
-    segmentation style={solid, draw=black!20, line width=0.5pt},
-    before skip=8pt,
-    after skip=8pt,
+    segmentation style={solid, draw=black!15, line width=0.4pt},
+    before skip=10pt,
+    after skip=10pt,
     unbreakable
 }
 
 \newenvironment{symbols}{
+    \par\smallskip
+    {\color{blue!60!black}\bfseries Erklärung der Formelzeichen}\par\smallskip
     \renewcommand{\arraystretch}{1.15}
     \tabularx{\linewidth}{@{}>{$}l<{$} l X@{}}
 }{
@@ -138,7 +138,6 @@
 \tableofcontents
 \vspace{1cm}
 
-\begin{multicols*}{2}
 
 % ==============================================================================
 % THEMA 1: WÄRMETRANSPORT
@@ -160,6 +159,28 @@ m& \eh{\kilo\gram} & Masse \\
 c& \eh{\joule\per\kilo\gram\per\kelvin} & Spezif. Wärmekapazität \\
 \Delta T& \eh{\kelvin} & Temperaturdifferenz \\
 c_W& $J/(g\cdot K)$ & Spezif. Wärmekapazität von Wasser
+    \end{symbols}
+\end{formelbox}
+
+\mysubsection{1.1.1 Materialkennwerte}
+
+\begin{formelbox}{Materialkennwerte}
+    \begin{align*}
+        \rho_{Wasser} &= 1000 \eh{kg/m^3} = 1{,}00 \eh{g/cm^3} \\
+        \rho_{Luft} &= 1{,}204 \eh{kg/m^3} = 0{,}001204 \eh{g/cm^3} \\
+        c_{Wasser} &= 4{,}182 \eh{kJ/(kg K)} = 4182 \eh{J/(kg K)} \\
+        c_{Aluminium} &= 0{,}900 \eh{kJ/(kg K)} = 900 \eh{J/(kg K)} \\
+        c_{Kupfer} &= 0{,}385 \eh{kJ/(kg K)} = 385 \eh{J/(kg K)} \\
+        c_{Stahl} &= 0{,}470 \eh{kJ/(kg K)} = 470 \eh{J/(kg K)}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+\rho_{Wasser}& \eh{kg/m^3} & Dichte von Wasser bei 4\,°C \\
+\rho_{Luft}& \eh{kg/m^3} & Dichte von Luft bei ca. 20\,°C \\
+c_{Wasser}& \eh{J/(kg K)} & Spezifische Wärmekapazität von Wasser \\
+c_{Aluminium}& \eh{J/(kg K)} & Spezifische Wärmekapazität von Aluminium \\
+c_{Kupfer}& \eh{J/(kg K)} & Spezifische Wärmekapazität von Kupfer \\
+c_{Stahl}& \eh{J/(kg K)} & Spezifische Wärmekapazität von Stahl
     \end{symbols}
 \end{formelbox}
 
@@ -1523,5 +1544,4 @@ y_0& \eh{m} & Amplitude \\
     \end{symbols}
 \end{formelbox}
 
-\end{multicols*}
 \end{document}
