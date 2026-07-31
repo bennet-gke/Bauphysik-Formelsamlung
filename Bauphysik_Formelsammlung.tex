@@ -1,0 +1,437 @@
+\documentclass[11pt,a4paper]{article}
+
+% Zentrale Layout- und Basis-Einstellungen laden
+\input{../Zentral/praeambel.tex}
+
+% Fachspezifische PDF-Metadaten
+\hypersetup{pdftitle={Bauphysik - Formelsammlung}}
+
+% --- Mathematik & Bauphysik ---
+\usepackage{newtxmath} % Das Haupt-Mathepaket
+
+% 1. Fix für \Bbbk Konflikt
+\let\Bbbk\undefined
+\usepackage{amssymb}
+
+% 2. Fix für \openbox Konflikt
+\let\openbox\undefined
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage[locale=DE, per-mode=symbol, separate-uncertainty=true]{siunitx} % Wichtig für korrekte Einheiten
+\usepackage{physics} % Nützliche Makros
+\AtBeginDocument{\RenewCommandCopy\qty\SI} % Behebt Konflikt zwischen physics und siunitx
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[most]{tcolorbox} % Für schöne Hervorhebungs-Boxen
+\usepackage{multicol}        % Für mehrspaltiges Layout
+\usepackage{tabularx}        % Für flexible Tabellen
+
+% --- Fachspezifische Kopfzeile ---
+\rhead{\textbf{\large Bauphysik}\\Formelsammlung}
+
+% --- Formel-Box Design (Das "Ultimative" Layout) ---
+\newtcolorbox{formelbox}[1]{
+    enhanced,
+    colback=white,
+    colframe=blue!35!black,
+    colbacktitle=blue!5!white,
+    coltitle=blue!85!black,
+    fonttitle=\bfseries\sffamily,
+    fontlower=\footnotesize,
+    title=#1,
+    boxrule=0.8pt,
+    arc=4pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    boxsep=0pt,
+    toptitle=4pt, bottomtitle=4pt,
+    segmentation style={solid, draw=black!20, line width=0.5pt},
+    before skip=10pt,
+    after skip=10pt,
+    % Boxen nicht über Seiten umbrechen
+    unbreakable
+}
+
+% --- Makro für Symbolverzeichnis in Formeln ---
+\newenvironment{symbols}{
+    \renewcommand{\arraystretch}{1.2}
+    \tabularx{\linewidth}{@{}l l X@{}}
+}{
+    \endtabularx
+}
+
+\title{\vspace{-2cm}\textbf{\Huge Formelsammlung Bauphysik}}
+\author{Bennet Geschke}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vspace{-1.5cm}
+
+\tableofcontents
+\vspace{1cm}
+
+% Zweispaltiges Layout für kompaktere Formelsammlung
+\begin{multicols*}{2}
+    \begin{formelbox}{Wärmeenergie}
+        \begin{align*}
+            c_W    & = 4,182 \eh{J/(g \cdot K)}                          \\
+            R_{si} & = 0,1 \uparrow / 0,13 \rightarrow / 0,17 \downarrow \\
+            R_{se} & = 0,04
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $c_W$ & \unit{J/(g\cdot\kelvin)} & Spezifische Wärmekapazität von Wasser \\
+        \end{symbols}
+    \end{formelbox}
+    \begin{formelbox}{Wärmeenergie}
+        \begin{align*}
+            Q & = m \cdot c \cdot \Delta T
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $Q$ & \unit{\joule} & Wärmeenergie \\
+            $m$ & \unit{\kilo\gram} & Masse \\
+            $c$ & \unit{\joule\per\kilo\gram\per\kelvin} & Spezif. Wärmekapazität \\
+            $\Delta T$ & \unit{\kelvin} & Temperaturdifferenz
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmestrom (Allgemein)}
+        \begin{align*}
+            \dot{Q} & = \dot{m} \cdot c \cdot \Delta T
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $\dot{Q}$ & \unit{\watt} & Wärmestrom \\
+            $\dot{m}$ & \unit{\kilo\gram\per\second} & Massenstrom \\
+            $c$ & \unit{\joule\per\kilo\gram\per\kelvin} & Spezif. Wärmekapazität \\
+            $\Delta T$ & \unit{\kelvin} & Temperaturdifferenz
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmestromdichte \& Transmission}
+        \begin{align*}
+            \dot{Q} & = q \cdot A                                 \\
+            \dot{Q} & = U \cdot A \cdot \Delta T                  \\
+            \dot{Q} & = -\lambda \cdot \frac{A}{d} \cdot \Delta T
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $\dot{Q}$ & \unit{\watt} & Wärmestrom \\
+            $q$ & \unit{\watt\per\metre\squared} & Wärmestromdichte \\
+            $U$ & \unit{\watt\per\metre\squared\per\kelvin} & Wärmedurchgangskoeff. \\
+            $\lambda$ & \unit{\watt\per\metre\per\kelvin} & Wärmeleitfähigkeit \\
+            $A$ & \unit{\metre\squared} & Fläche \\
+            $d$ & \unit{\metre} & Bauteildicke
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Spezifische Wärmeleitfähigkeit}
+        \begin{align*}
+            \lambda & = \frac{\dot{Q} \cdot d}{A \cdot |\Delta T|}
+        \end{align*}
+    \end{formelbox}
+
+    \begin{formelbox}{Stationärer Wärmetransport}
+        \begin{align*}
+            \dot{Q} & = A \cdot \Delta T \cdot \sum \frac{\lambda}{d}
+        \end{align*}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmedurchgang und Wärmedruchlasswiderstand}
+        \begin{align*}
+            R       & = \frac{d}{\lambda}                                                     \\
+            \Lambda & = \frac{\lambda}{d} \; \textit{\footnotesize (quasi U einer Schicht)}   \\
+            R_{T}   & = R_{si} +\sum R_{i} + R_{se}                                           \\
+            U       & = \frac{1}{R_{T}} \; \textit{\footnotesize (nur für homogene Bauteile)}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $R$         & \unit{m^2 K/W} & Wärmedurchlasswiderstand \\
+            $\Lambda$   & \unit{W/(m^2 K)} & Wärmedurchlasskoeffizient einer Schicht \\
+            $U$         & \unit{W/(m^2 K)} & Wärmedurchgangskoeffizient des gesamten Bauteils \\
+            $R_{T}$     & \unit{m^2 K/W} & Wärmedurchlasswiderstand gesamt \\
+            $R_i$       & \unit{m^2 K/W} & Wärmewiderstand der Einzelschichten \\
+            $R_{si}$    & \unit{m^2 K/W} & Wärmeübergangsw. innen \\
+            $R_{se}$    & \unit{m^2 K/W} & Wärmeübergangsw. außen \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Temperaturverlauf im Bauteil}
+        \begin{align*}
+            \frac{\Delta T_i}{\Delta T_{ges}} & = \frac{R_i}{R_{T}}                                                                                     \\
+            f                                 & = \frac{R_{si}}{R_{T}} = \frac{\vartheta_{ai} - \vartheta_{si} }{\vartheta_{ai} - \vartheta_{ae}}       \\
+            f_{Rsi}                           & = 1- f= 1-\frac{R_{si}}{R_T} = \frac{\vartheta_{si} - \vartheta_{ae} }{\vartheta_{ai} - \vartheta_{ae}} \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $\Delta T_i$ & \unit{K} & Temperaturdifferenz der Einzelschicht \\
+            $\Delta T_{ges}$ & \unit{K} & Temperaturdifferenz der Gesamtschicht \\
+            $R_i$ & \unit{m^2 K/W} & Wärmedurchlasswiderstand der Einzelschicht \\
+            $R_{T}$ & \unit{m^2 K/W} & Wärmedurchlasswiderstand der Gesamtschicht \\
+            $f$ & $\unit{m^2 K/W}$ & Temperaturfaktor der Einzelschicht \\
+            $f_{Rsi}$ & $\unit{m^2 K/W}$ & Temperaturfaktor der Gesamtschicht \\
+            $\vartheta_{ai}$ & \unit{K} & Innentemperatur \\
+            $\vartheta_{ae}$ & \unit{K} & Außentemperatur \\
+            $\vartheta_{si}$ & \unit{K} & Oberflächentemperatur innen \\
+            $\vartheta_{se}$ & \unit{K} & Oberflächentemperatur außen \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Transmissionswärmeverlust}
+        \begin{align*}
+            H_T & = U \cdot A          \\
+            U   & = \frac{q}{\Delta T}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $H_T$ & \unit{W/K} & Transmissionswärmeverlust \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmedurchgangswiederstand (mittel)}
+        \begin{align*}
+            R_T & = \frac{R_{T,min} + R_{T,max}}{2} \\
+            U_m & = \frac{1}{R_T}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $R_T$       & \unit{m^2 K/W} & Wärmedurchgangsw. gesamt \\
+            $R_{T,min}$ & \unit{m^2 K/W} & Wärmedurchgangsw. minimal \\
+            $R_{T,max}$ & \unit{m^2 K/W} & Wärmedurchgangsw. maximal \\
+            $U_m$       & \unit{W/K}     & mittlerer Transmissionswärmeverlust \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmedurchgangskoeffizient (Naiv - Nebeneinanderliegende Flächen)}
+        \begin{align*}
+            R_{T,max} & = \frac{1}{U_{min}}              \\
+            U_{min}   & = \frac{U_j \cdot A_j}{\sum A_j} \\
+            U_j       & = \frac{1}{R_j}                  \\
+            R_j       & = R_{si} + \sum R_i + R_{se}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $U_j$       & \unit{W/m^2K}     & einzelne Wärmedurchgangskoeffizienten \\
+            $A_j$       & \unit{m^2}     & einzelne Flächen \\
+            $R_j$       & \unit{m^2 K/W} & einzelne Wärmedurchgangsw. \\
+            $U_{min}$   & \unit{W/m^2K}     & minimaler Wärmedurchgangskoeffizient\\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmedurchgangskoeffizient (Reihenschaltung von Flächen)}
+        \begin{align*}
+            R_{T,min} & = R_{si} + \sum \frac{1}{\Lambda_i} + R_{se} \\
+            \Lambda_i & = \frac{\Lambda_j \cdot A_j}{\sum A_j}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $R_{T,min}$ & \unit{m^2 K/W} & Wärmedurchgangsw. minimal \\
+            $\Lambda_i$ & \unit{W/m^2K} & einzelne Wärmedurchlasskoeffizienten \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmebrückenzuschlag}
+        \begin{align*}
+            U_{ges}       & = U + \Delta U_{WB}                                                                       \\
+            \Delta U_{WB} & = \frac{1}{A_{ges}} \cdot \sum (l_j \cdot \psi_j \cdot F_j) \cdot \sum (\chi_k \cdot F_k) \\
+                          & \textit{\footnotesize $\Delta U_{WB}$ = 0,1 (ohne Nachweis), 0,05 (DIN 4108-2)}
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $U_{ges}$ & \unit{W/m^2K} & Wärmedurchgangskoeffizient gesamt \\
+            $\Delta U_{WB}$ & \unit{W/m^2K} & Wärmedurchgangskoeffizient Wärmebrückenzuschlag \\
+            $A_{ges}$ & \unit{m^2} & Fläche gesamt \\
+            $l_j$ & \unit{m} & Länge der Wärmebrücke j \\
+            $\psi_j$ & \unit{W/mK} & Psi-Wert der Wärmebrücke j \\
+            $F_j$ & \unit{m^2} & Fläche der Wärmebrücke j \\
+            $\chi_k$ & \unit{W/K} & Chi-Wert der Wärmebrücke k \\
+            $F_k$ & \unit{m^2} & Fläche der Wärmebrücke k \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Wärmestrahlung}
+        \begin{align*}
+            q             & = \epsilon \cdot \sigma \cdot T^4                                                                                        \\
+            q_r           & = \sigma \cdot \epsilon_{pp} \cdot (T_1^4 - T_2^4) \quad \textit{ \scriptsize mit: $T_1 > T_2$}                          \\
+            \epsilon_{pp} & = \frac{1}{\frac{1}{\epsilon_1} + \frac{1}{\epsilon_2}-1}\quad \textit{ \scriptsize $\sigma = \SI{5,67e-8}{W/(m^2K^4)}$} \\
+            q             & = \frac{Q}{T \cdot A} = \frac{\dot{Q}}{A}                                                                                \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $q$ & \unit{W/m^2} & Intensität der Wärmestrahlung (Wärmestromdichte) \\
+            $q_r$ & \unit{W/m^2} & Wärmeaustausch zwischen unendlich planparallelen Oberflächen \\
+            $\sigma$ & \unit{W/(m^2K^4)} & Stefan-Boltzmann-Konstante \\
+            $T_1$ & \unit{K} & Temperatur 1 \\
+            $T_2$ & \unit{K} & Temperatur 2 \\
+            $\epsilon$ & --- & Emissionsgrad \\
+            $\epsilon_{pp}$ & --- & Emissionsgrad planparallel strahlender Körper \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{solare Wärmegewinnung}
+        \begin{align*}
+            \dot{Q}_{s} & = \sum I_{s,j} \cdot \sum (g_{j,i,\perp} \cdot F_{c,j,i} \cdot A_{f,j,i})
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $I_{s}$ & \unit{W/m^2} & Solare Strahlung (auf senkrechte Fläche) \\
+            $g_{\perp}$ & --- & Gesamtenergiedurchlasszahl \\
+            $F_{c}$ & --- & Abminderungsfaktor Sonenschutz \\
+            $A_{f}$ & \unit{m^2} & Fläche der Fenster \\
+            Indexe: \\
+            $j$ & --- & Himmelsrichtung \\
+            $i$ & --- & Bauteil  \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Sommerlicher Wärmeschutz}
+        \begin{align*}
+            f_{WG}   & = \frac{A_{f}}{A_{g}} \cdot 100 \leq  \text{\footnotesize erf.} f_{WG} \\
+            S_{vorh} & = \frac{\sum (A_f \cdot g_{\perp}\cdot F_c)}{A_{g}}                    \\
+            S_{zul}  & = \sum _{i=1}^{n=6} s_i                                                \\
+            s_2      & = a -b \cdot f_{WG}                                                    \\
+            S_{vorh} & > S_{zul}                                                              \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $f_{WG}$ & --- & Verhältnis von Fensterfläche zu Gesamtfläche (Bagatellbedingung)\\
+            $S_{vorh}$ & --- & Vorhandener Strahlungskoeffizient \\
+            $S_{zul}$ & --- & Zulässiger Strahlungskoeffizient \\
+            $A_{f}$ & \unit{m^2} & Fensterfläche \\
+            $A_{g}$ & \unit{m^2} & Grundfläche des Bezugsraums \\
+            $g_{\perp}$ & --- & Gesamtenergiedurchlasszahl \\
+            $F_{c}$ & --- & Abminderungsfaktor Sonenschutz \\
+            $s_1$ & --- & Nachtlüftung und Bauart \\
+            $s_2$ & --- & Fensteranteil \\
+            $s_3$ & --- & Sonnenschutzglas \\
+            $s_4$ & --- & Fensterneigung \\
+            $s_5$ & --- & Orientierung \\
+            $s_6$ & --- & einsatz passiver Kühlung \\
+            $a,b$ & --- & empirisch (Tabellenwerte) \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Schwingung eines Feder-Masse-Pendels}
+        \begin{align*}
+            \omega & = \sqrt{\frac{D}{m}}                \\
+            f      & = \frac{\omega}{2\pi} = \frac{1}{T} \\\end{align*}
+        \tcblower
+        \begin{symbols}
+            $\omega$ & \unit{1/s} $\equiv$ \unit{Hz} & Kreisfrequenz\\
+            $T$ & \unit{s} & Periode\\
+            $f$ & \unit{1/s} $\equiv$ \unit{Hz} & Frequenz\\
+            $D$ & \unit{N/m} & Federkonstante\\
+            $m$ & \unit{kg} & Masse\\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Schwingungsfunktion}
+        \begin{align*}
+            y(t)        & = y_0 \cdot \cos(\omega \cdot t + \varphi)                                    \\
+            \dot{y}(t)  & = -\underbrace{y_0 \cdot \omega}_{v_0} \cdot \sin(\omega \cdot t + \varphi)   \\
+            \ddot{y}(t) & = -\underbrace{y_0 \cdot \omega^2}_{a_0} \cdot \cos(\omega \cdot t + \varphi) \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $y(t)$     & \unit{m} & Auslenkung\\
+            $\dot{y}(t)$ & \unit{m/s} & Geschwindigkeit\\
+            $\ddot{y}(t)$ & \unit{m/s^2} & Beschleunigung\\
+            $y_0$      & \unit{m} & Amplitude\\
+            $v_0$      & \unit{m/s} & Anfangsgeschwindigkeit\\
+            $a_0$      & \unit{m/s^2} & Anfangsbeschleunigung\\
+            $\omega$   & \unit{1/s} $\equiv$ \unit{Hz} & Kreisfrequenz\\
+            $\varphi$  & \unit{rad} & Phasenverschiebung\\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Schallausbreitung (Abstandsgesetz \& Dämpfung)}
+        \begin{align*}
+            L(r)     & = L(r_0) - K \cdot \log_{10}\left(\frac{r}{r_0}\right) - \Delta L \\
+            \Delta L & = D \cdot (r - r_0)
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $r$ & \unit{m} & Abstand zum Immissionsort \\
+            $r_0$ & \unit{m} & Bezugsabstand der Messung \\
+            $L(r_0)$ & \unit{dB} & Schallpegel bei $r_0$ (an der Quelle) \\
+            $L(r)$ & \unit{dB} & Schallpegel bei $r$ (am Ort) \\
+            $K$ & --- & Geometriefaktor ($10$ für Linienquelle, $20$ für Punktquelle) \\
+            $D$ & \unit{dB/m} & Schallabsorption (Streckendämpfung) \\
+            $\Delta L$ & \unit{dB} & Pegelminderung durch Luftabsorption \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Pegeladdition bei unterschiedlichen Bezugsabständen ($r_0$)}
+        Jede Quelle $i$ einzeln auf den Zielabstand $r_{\text{ziel}}$ (z.\,B. den Immissionsort) umrechnen:
+        \begin{align*}
+            L_i(r_{\text{ziel}}) = L_i(r_{0,i}) - K \cdot \log_{10}\left(\frac{r_{\text{ziel}}}{r_{0,i}}\right) - \Delta L_{\text{abs},i}
+        \end{align*}
+
+        Erst wenn alle Pegel für den \textit{gleichen} Abstand vorliegen, dürfen sie addiert werden:
+        \begin{align*}
+            L_{\text{ges}}(r_{\text{ziel}}) = 10 \cdot \log_{10} \left( \sum_{i=1}^{n} 10^{\frac{L_i(r_{\text{ziel}})}{10}} \right)
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $r_{\text{ziel}}$ & \unit{m} & Gemeinsamer Zielabstand (z.\,B. Immissionsort $A$) \\
+            $r_{0,i}$ & \unit{m} & Ursprünglicher Bezugsabstand der Quelle $i$ \\
+            $L_i(r_{0,i})$ & \unit{dB} & Gegebener Startpegel der Quelle $i$ \\
+            $L_i(r_{\text{ziel}})$ & \unit{dB} & Berechneter Pegel der Quelle $i$ im Zielabstand \\
+            $L_{\text{ges}}$ & \unit{dB} & Resultierender Gesamtpegel am Zielort \\
+            $K$ & --- & Geometriefaktor ($10$ für Linienquelle, $20$ für Punktquelle) \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Schalldämmaß}
+        \begin{align*}
+            R   & = L_S - L_E - 10 \cdot \log_{10}(T) \\
+            T   & = \frac{A_E}{S_0}                   \\
+            A_E & = 0,161 \cdot \frac{V_E}{t}         \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $R$ & \unit{dB} & Schalldämmmaß \\
+            $L_S$ & \unit{dB} & Pegel im Sende-/Schallfeld \\
+            $L_E$ & \unit{dB} & Pegel im Empfangsraum \\
+            $S_0$ & \unit{m^2} & Fläche der Trennwand (Hindernis)\\
+            $A_E$ & \unit{m^2} & Absorption im Empfangsraum (Oberflächen im Raum) \\
+            $V_E$ & \unit{m^3} & Volumen des Empfangsraums \\
+            $T$ & --- & Schalltransmissiongrad \\
+            $t$ & \unit{t} & Nachhallzeit \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Schallleistungspegel - Schalldruckpegel (diffuses Schallfeld)}
+        \begin{align*}
+            L_p & = L_W - 10 \cdot \log_{10} \left( \frac{A_E}{4} \right) \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $L_p$ & \unit{dB} & Schalldruckpegel \\
+            $L_W$ & \unit{dB} & Schallleistungspegel \\
+            $A_E$ & \unit{m^2} & Absorption im Empfangsraum (Betrachteter Raum) \\
+        \end{symbols}
+    \end{formelbox}
+
+    \begin{formelbox}{Massegesetzt}
+        \begin{align*}
+            R  & = 20 \cdot \log_{10} \left(\frac{m'}{1 \unit{kg/m^2}}\cdot \frac{f}{1 \unit{Hz}}\right) -45 \\
+            m' & = \rho \cdot d                                                                              \\
+        \end{align*}
+        \tcblower
+        \begin{symbols}
+            $R$ & \unit{dB} & Schalldämmmaß \\
+            $f$ & \unit{Hz} & Frequenz \\
+            $m'$ & \unit{kg/m^2} & Flächig bezogene Masse \\
+            $\rho$ & \unit{kg/m^3} & Dichte \\
+            $d$ & \unit{m} & Dicke \\
+        \end{symbols}
+    \end{formelbox}
+\end{multicols*}
+\end{document}
