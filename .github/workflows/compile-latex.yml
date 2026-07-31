@@ -3,28 +3,37 @@ name: Build LaTeX Document
 on:
   push:
     branches:
-      - main       # Triggers whenever you push changes to the main branch
-  pull_request:
-    branches:
-      - main
+      - main  # Passe den Branch-Namen an, falls deiner z.B. 'master' heißt
+
+permissions:
+  contents: write  # Erlaubt GitHub Actions, Änderungen ins Repository zu committen
 
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout your repository files
+      # 1. Repository auschecken
       - name: Set up Git repository
         uses: actions/checkout@v4
 
-      # 2. Compile your LaTeX file to PDF
+      # 2. LaTeX-Datei kompilieren
+      # Ersetze 'main.tex' durch den Dateinamen deiner Haupt-.tex-Datei
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v4
         with:
           root_file: Bauphysik_Formelsammlung.tex
 
-      # 3. Save the PDF so you can download it from the Actions tab
-      - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Generated-PDF
-          path: Bauphysik_Formelsammlung.pdf      # Output filename matches your .tex file base name
+      # 3. PDF in den gewünschten Zielnamen im Root umbenennen und committen
+      - name: Commit and Push PDF to Root
+        run: |
+          # Das erzeugte PDF (heißt standardmäßig wie die root_file, z.B. main.pdf) verschieben/umbenennen
+          mv main.pdf Bauphysik_Formelsammlung.pdf
+
+          # Git-Benutzer konfigurieren
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Datei hinzufügen und committen
+          git add Bauphysik_Formelsammlung.pdf
+          git commit -m "auto: Bauphysik_Formelsammlung.pdf aktualisiert [skip ci]" || echo "Keine Änderungen vorhanden"
+          git push
