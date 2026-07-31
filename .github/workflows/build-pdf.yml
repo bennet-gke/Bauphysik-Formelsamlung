@@ -24,6 +24,10 @@ jobs:
         run: |
           latexmk -pdf -interaction=nonstopmode Bauphysik_Formelsammlung.tex
 
+      - name: Git installieren
+        run: |
+          apt-get update && apt-get install -y git
+
       - name: PDF committen und pushen
         run: |
           git config user.name "github-actions[bot]"
