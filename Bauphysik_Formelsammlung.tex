@@ -1,17 +1,22 @@
 \documentclass[11pt,a4paper]{article}
 
+% ===== Ersatz für die fehlende zentrale Präambel =====
+\usepackage[utf8]{inputenc}   % moderne Kodierung
+\usepackage[T1]{fontenc}      % korrekte Umlaute
+\usepackage{geometry}         % Seitenränder
+\geometry{left=2.5cm, right=2.5cm, top=2cm, bottom=2cm}
+\usepackage{setspace}         % Zeilenabstand
+\singlespacing                % für Formelsammlung kompakt
+\usepackage{xcolor}           % wird von tcolorbox benötigt
+% ====================================================
+
 \usepackage{fancyhdr}   % Für Kopfzeilen
 \usepackage{hyperref}   % Für PDF-Metadaten und Links
-
-% Zentrale Layout- und Basis-Einstellungen laden
-\input{../Zentral/praeambel.tex}
 
 % Fachspezifische PDF-Metadaten
 \hypersetup{pdftitle={Bauphysik - Formelsammlung}}
 
 % --- Mathematik & Bauphysik ---
-\usepackage{newtxmath} % Das Haupt-Mathepaket
-
 % 1. Fix für \Bbbk Konflikt
 \let\Bbbk\undefined
 \usepackage{amssymb}
@@ -22,41 +27,49 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{mathtools}
-\usepackage{cancel}
-\usepackage[locale=DE, per-mode=symbol, separate-uncertainty=true]{siunitx} % Wichtig für korrekte Einheiten
-\usepackage{physics} % Nützliche Makros
-\AtBeginDocument{\RenewCommandCopy\qty\SI} % Behebt Konflikt zwischen physics und siunitx
 \usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage[most]{tcolorbox} % Für schöne Hervorhebungs-Boxen
 \usepackage{multicol}        % Für mehrspaltiges Layout
 \usepackage{tabularx}        % Für flexible Tabellen
 
-% --- Fachspezifische Kopfzeile ---
+% --- Kopf- und Fußzeilen (neu definiert) ---
+\pagestyle{fancy}
+\fancyhf{}                           % alle Kopf-/Fußzeilen löschen
+\renewcommand{\headrulewidth}{0.4pt} % Strich unter der Kopfzeile
 \rhead{\textbf{\large Bauphysik}\\Formelsammlung}
+\lhead{}            % leer lassen
+\chead{}            % leer lassen
+\cfoot{\thepage}    % Seitenzahl mitte unten
+
+% --- Makro für Einheiten (ersetzt das undefinierte \eh) ---
+\newcommand{\unit}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\eh}[1]{\unit{#1}}
+\newcommand{\joule}{\mathrm{J}}
+\newcommand{\watt}{\mathrm{W}}
+\newcommand{\kelvin}{\mathrm{K}}
+\newcommand{\gram}{\mathrm{g}}
+\newcommand{\kilo}{\mathrm{k}}
+\newcommand{\metre}{\mathrm{m}}
+\newcommand{\second}{\mathrm{s}}
+\newcommand{\per}{\ensuremath{/}}
+\newcommand{\squared}{\ensuremath{^{2}}}
+\newcommand{\SI}[2]{\ensuremath{#1\,\unit{#2}}}
+\newcommand{\si}[1]{\unit{#1}}
 
 % --- Formel-Box Design (Das "Ultimative" Layout) ---
-\newtcolorbox{formelbox}[1]{
-    enhanced,
-    colback=white,
-    colframe=blue!35!black,
-    colbacktitle=blue!5!white,
-    coltitle=blue!85!black,
-    fonttitle=\bfseries\sffamily,
-    fontlower=\footnotesize,
-    title=#1,
-    boxrule=0.8pt,
-    arc=4pt,
-    left=6pt, right=6pt, top=4pt, bottom=4pt,
-    boxsep=0pt,
-    toptitle=4pt, bottomtitle=4pt,
-    segmentation style={solid, draw=black!20, line width=0.5pt},
-    before skip=10pt,
-    after skip=10pt,
-    % Boxen nicht über Seiten umbrechen
-    unbreakable
+\newsavebox{\formelboxsave}
+\newenvironment{formelbox}[1]{
+    \par\addvspace{10pt}
+    \setlength{\fboxsep}{6pt}
+    \begin{lrbox}{\formelboxsave}
+    \begin{minipage}{0.96\linewidth}
+    \textbf{\sffamily #1}\par\medskip
+}{
+    \end{minipage}
+    \end{lrbox}
+    \noindent\fcolorbox{blue!35!black}{white}{\usebox{\formelboxsave}}
+    \par\addvspace{10pt}
 }
+\newcommand{\tcblower}{\par\medskip\hrule\medskip\par}
 
 % --- Makro für Symbolverzeichnis in Formeln ---
 \newenvironment{symbols}{
