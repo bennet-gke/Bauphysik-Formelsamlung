@@ -62,7 +62,7 @@
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
 
 \providecommand{\eh}[1]{\,[\unit{#1}]}
-\newcommand{\gradC}{\,\unit{\degree C}}
+\newcommand{\gradC}{\,\eh{\degree C}}
 
 % ==============================================================================
 % 5. TABELLEN & FORMELBOXEN
@@ -93,7 +93,7 @@
 
 \newenvironment{symbols}{
     \renewcommand{\arraystretch}{1.15}
-    \tabularx{\linewidth}{@{}l l X@{}}
+    \tabularx{\linewidth}{@{}>{$}l<{$} l X@{}}
 }{
     \endtabularx
 }
@@ -155,11 +155,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $Q$ & \unit{\joule} & Wärmeenergie \\
-        $m$ & \unit{\kilo\gram} & Masse \\
-        $c$ & \unit{\joule\per\kilo\gram\per\kelvin} & Spezif. Wärmekapazität \\
-        $\Delta T$ & \unit{\kelvin} & Temperaturdifferenz \\
-        $c_W$ & \unit{J/(g\cdot K)} & Spezif. Wärmekapazität von Wasser
+Q& \eh{\joule} & Wärmeenergie \\
+m& \eh{\kilo\gram} & Masse \\
+c& \eh{\joule\per\kilo\gram\per\kelvin} & Spezif. Wärmekapazität \\
+\Delta T& \eh{\kelvin} & Temperaturdifferenz \\
+c_W& $J/(g\cdot K)$ & Spezif. Wärmekapazität von Wasser
     \end{symbols}
 \end{formelbox}
 
@@ -169,8 +169,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\dot{Q}$ & \unit{\watt} & Wärmestrom \\
-        $\dot{m}$ & \unit{\kilo\gram\per\second} & Massenstrom
+\dot{Q}& \eh{\watt} & Wärmestrom \\
+\dot{m}& \eh{\kilo\gram\per\second} & Massenstrom
     \end{symbols}
 \end{formelbox}
 
@@ -183,8 +183,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\lambda$ & \unit{W/(m\cdot K)} & Stoffkonstante, Wärmeleitfähigkeit \\
-        $\Delta T$ & \unit{K} & Temperaturdifferenz $T_k - T_w$, $\Delta T < 0$
+\lambda& \eh{W/(m\cdot K)} & Stoffkonstante, Wärmeleitfähigkeit \\
+\Delta T& \eh{K} & Temperaturdifferenz $T_k - T_w$, $\Delta T < 0$
     \end{symbols}
 \end{formelbox}
 
@@ -192,6 +192,14 @@
     \begin{align*}
         \lambda & = \frac{\dot{Q} \cdot d}{A \cdot |\Delta T|}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \lambda& \eh{W/(m\cdot K)} & Wärmeleitfähigkeit \\
+         \dot{Q}& \eh{W} & Wärmestrom \\
+         d& \eh{m} & Schichtdicke \\
+         A& \eh{m^2} & Fläche \\
+         |\Delta T|& \eh{K} & Betrag der Temperaturdifferenz
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Wärmestromdichte}
@@ -201,7 +209,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $q$ & \unit{W/m^2} & Wärmestromdichte
+q& \eh{W/m^2} & Wärmestromdichte
     \end{symbols}
 \end{formelbox}
 
@@ -213,7 +221,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $R$ & \unit{m^2 K/W} & Wärmedurchlasswiderstand einer Schicht
+R& \eh{m^2 K/W} & Wärmedurchlasswiderstand einer Schicht
     \end{symbols}
 \end{formelbox}
 
@@ -223,7 +231,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\Lambda$ & \unit{W/(m^2 K)} & Wärmedurchlasskoeffizient einer Schicht
+\Lambda& \eh{W/(m^2 K)} & Wärmedurchlasskoeffizient einer Schicht
     \end{symbols}
 \end{formelbox}
 
@@ -234,10 +242,10 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $R_T$ & \unit{m^2 K/W} & Wärmedurchgangswiderstand gesamt \\
-        $R_{si}$ & \unit{m^2 K/W} & Wärmeübergangswiderstand innen ($0,1$ $\uparrow$, $0,13$ $\rightarrow$, $0,17$ $\downarrow$) \\
-        $R_{se}$ & \unit{m^2 K/W} & Wärmeübergangswiderstand außen ($0,04$) \\
-        $R_i$ & \unit{m^2 K/W} & Wärmedurchlasswiderstand der Einzelschicht
+R_T& \eh{m^2 K/W} & Wärmedurchgangswiderstand gesamt \\
+R_{si}& \eh{m^2 K/W} & Wärmeübergangswiderstand innen ($0,1$ $\uparrow$, $0,13$ $\rightarrow$, $0,17$ $\downarrow$) \\
+R_{se}& \eh{m^2 K/W} & Wärmeübergangswiderstand außen ($0,04$) \\
+R_i& \eh{m^2 K/W} & Wärmedurchlasswiderstand der Einzelschicht
     \end{symbols}
 \end{formelbox}
 
@@ -248,9 +256,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $U$ & \unit{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
-        $\vartheta_{ai}$ & \unit{K} & Innenlufttemperatur \\
-        $\vartheta_{ae}$ & \unit{K} & Außenlufttemperatur
+U& \eh{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
+\vartheta_{ai}& \eh{K} & Innenlufttemperatur \\
+\vartheta_{ae}& \eh{K} & Außenlufttemperatur
     \end{symbols}
 \end{formelbox}
 
@@ -258,6 +266,14 @@
     \begin{align*}
         \dot{Q} & = U \cdot A \cdot (\vartheta_{ai} - \vartheta_{ae}) \eh{W}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \dot{Q}& \eh{W} & Wärmestrom \\
+         U& \eh{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
+         A& \eh{m^2} & Fläche \\
+         \vartheta_{ai}& \eh{K} & Innenlufttemperatur \\
+         \vartheta_{ae}& \eh{K} & Außenlufttemperatur
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Transmissionswärmeverlust}
@@ -266,7 +282,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $H_T$ & \unit{W/K} & Transmissionswärmeverlust-Koeffizient
+H_T& \eh{W/K} & Transmissionswärmeverlust-Koeffizient
     \end{symbols}
 \end{formelbox}
 
@@ -278,8 +294,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\Delta T_i$ & \unit{K} & Temperaturdifferenz der Einzelschicht \\
-        $\Delta T_{ges}$ & \unit{K} & Temperaturdifferenz der Gesamtschicht
+\Delta T_i& \eh{K} & Temperaturdifferenz der Einzelschicht \\
+\Delta T_{ges}& \eh{K} & Temperaturdifferenz der Gesamtschicht
     \end{symbols}
 \end{formelbox}
 
@@ -290,9 +306,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\theta_k$ & \unit{K} & Temperatur an der Schichtgrenze \\
-        $\theta_i$ & \unit{K} & Innentemperatur \\
-        $\theta_e$ & \unit{K} & Außentemperatur
+\theta_k& \eh{K} & Temperatur an der Schichtgrenze \\
+\theta_i& \eh{K} & Innentemperatur \\
+\theta_e& \eh{K} & Außentemperatur
     \end{symbols}
 \end{formelbox}
 
@@ -302,8 +318,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $f_{Rsi}$ & --- & Temperaturfaktor an der Innenoberfläche \\
-        $\vartheta_{si}$ & \unit{K} & Innenoberflächentemperatur
+f_{Rsi}& --- & Temperaturfaktor an der Innenoberfläche \\
+\vartheta_{si}& \eh{K} & Innenoberflächentemperatur
     \end{symbols}
 \end{formelbox}
 
@@ -316,9 +332,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $R_{T,min}$ & \unit{m^2 K/W} & Minimaler Wärmedurchgangswiderstand \\
-        $R_{T,max}$ & \unit{m^2 K/W} & Maximaler Wärmedurchgangswiderstand \\
-        $U_m$ & \unit{W/(m^2 K)} & Mittlerer Wärmedurchgangskoeffizient
+R_{T,min}& \eh{m^2 K/W} & Minimaler Wärmedurchgangswiderstand \\
+R_{T,max}& \eh{m^2 K/W} & Maximaler Wärmedurchgangswiderstand \\
+U_m& \eh{W/(m^2 K)} & Mittlerer Wärmedurchgangskoeffizient
     \end{symbols}
 \end{formelbox}
 
@@ -331,8 +347,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $U_j$ & \unit{W/(m^2 K)} & Einzelne Wärmedurchgangskoeffizienten \\
-        $A_j$ & \unit{m^2} & Einzelne Flächen
+U_j& \eh{W/(m^2 K)} & Einzelne Wärmedurchgangskoeffizienten \\
+A_j& \eh{m^2} & Einzelne Flächen
     \end{symbols}
 \end{formelbox}
 
@@ -341,6 +357,15 @@
         R_{T,min} & = R_{si} + \sum \frac{1}{\Lambda_i} + R_{se} \\
         \Lambda_i & = \frac{\sum \Lambda_j \cdot A_j}{\sum A_j}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         R_{T,min}& \eh{m^2 K/W} & Minimaler Wärmedurchgangswiderstand \\
+         R_{si}& \eh{m^2 K/W} & Wärmeübergangswiderstand innen \\
+         R_{se}& \eh{m^2 K/W} & Wärmeübergangswiderstand außen \\
+         \Lambda_i& \eh{W/(m^2 K)} & Wärmedurchlasskoeffizient der Einzelschicht \\
+         \Lambda_j& \eh{W/(m^2 K)} & Wärmedurchlasskoeffizient von Teilflächen \\
+         A_j& \eh{m^2} & Fläche der Teilfläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Wärmebrückenzuschlag}
@@ -350,11 +375,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\Delta U_{WB}$ & \unit{W/(m^2 K)} & Wärmebrückenzuschlag \\
-        & & $= 0,10$ (ohne Nachweis), $0,05$ (DIN 4108-2) \\
-        $l_j$ & \unit{m} & Länge der Wärmebrücke \\
-        $\psi_j$ & \unit{W/(m K)} & Psi-Wert der Wärmebrücke \\
-        $\chi_k$ & \unit{W/K} & Chi-Wert der Wärmebrücke
+\Delta U_{WB}& \eh{W/(m^2 K)} & Wärmebrückenzuschlag \\
+& & $= 0,10$ (ohne Nachweis), $0,05$ (DIN 4108-2) \\
+l_j& \eh{m} & Länge der Wärmebrücke \\
+\psi_j& \eh{W/(m K)} & Psi-Wert der Wärmebrücke \\
+\chi_k& \eh{W/K} & Chi-Wert der Wärmebrücke
     \end{symbols}
 \end{formelbox}
 
@@ -373,8 +398,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $q$ & \unit{W/m^2} & Abgestrahlte Intensität \\
-        $\sigma$ & \unit{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante
+q& \eh{W/m^2} & Abgestrahlte Intensität \\
+\sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante
     \end{symbols}
 \end{formelbox}
 
@@ -384,7 +409,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\epsilon$ & --- & Emissionsgrad ($\epsilon < 1$ für nicht-schwarze Körper)
+\epsilon& --- & Emissionsgrad ($\epsilon < 1$ für nicht-schwarze Körper)
     \end{symbols}
 \end{formelbox}
 
@@ -394,7 +419,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\lambda_{max}$ & \unit{\mu m} & Wellenlänge des Intensitätsmaximums
+\lambda_{max}& \eh{\mu m} & Wellenlänge des Intensitätsmaximums
     \end{symbols}
 \end{formelbox}
 
@@ -405,10 +430,10 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\alpha$ & --- & Absorptionsgrad \\
-        $\rho$ & --- & Reflexionsgrad \\
-        $\tau$ & --- & Transmissionsgrad \\
-        $\epsilon$ & --- & Emissionsgrad
+\alpha& --- & Absorptionsgrad \\
+\rho& --- & Reflexionsgrad \\
+\tau& --- & Transmissionsgrad \\
+\epsilon& --- & Emissionsgrad
     \end{symbols}
 \end{formelbox}
 
@@ -421,8 +446,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $q$ & \unit{W/m^2} & Austausch-Wärmestromdichte \\
-        $\epsilon_{pp}$ & --- & Gemeinsamer Emissionsgrad (gilt für unendlich ausgedehnte planparallele Oberflächen)
+q& \eh{W/m^2} & Austausch-Wärmestromdichte \\
+\epsilon_{pp}& --- & Gemeinsamer Emissionsgrad (gilt für unendlich ausgedehnte planparallele Oberflächen)
     \end{symbols}
 \end{formelbox}
 
@@ -431,6 +456,14 @@
         q_{10} & = \sigma \cdot \epsilon_i \cdot T_i^4 \\
         \epsilon_i & = 1 - \rho_i
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         q_{10}& \eh{W/m^2} & Wärmestrahlungsdichte der Einzelfläche \\
+         \sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante \\
+         \epsilon_i& --- & Emissionsgrad der Fläche \\
+         T_i& \eh{K} & Temperatur der Fläche \\
+         \rho_i& --- & Reflexionsgrad der Fläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Solarkonstante}
@@ -438,6 +471,11 @@
         q_{max} & = 1,3 \eh{kW/m^2} \quad \text{(oberhalb Atmosphäre)} \\
         q_{max} & = 1,0 \eh{kW/m^2} \quad \text{(unterhalb Atmosphäre)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         q_{max}& \eh{kW/m^2} & Maximaler globaler Strahlungsfluss \\
+         \text{(oft auch } G_{max} \text{)}& --- & Solarkonstante
+    \end{symbols}
 \end{formelbox}
 
 % ==============================================================================
@@ -458,6 +496,10 @@
         \text{Dreifachverglasung (2x selektiv)} & : g = 0,35 - 0,50 \\
         \text{Sonnenschutzglas} & : g = 0,20 - 0,50
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         g& --- & Gesamtenergiedurchlassgrad
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Lichttransmissionsgrad}
@@ -468,6 +510,10 @@
         \text{Dreifachglas ohne Beschichtung} & : \tau_r = 0,75 \\
         \text{Wärmedämmglas 2-fach} & : \tau_r = 0,60 - 0,78
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \tau_r& --- & Lichttransmissionsgrad
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Abminderungsfaktor Sonnenschutz}
@@ -476,8 +522,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $g_{tot}$ & --- & Tatsächlicher Gesamtenergiedurchlassgrad mit Sonnenschutz \\
-        $g$ & --- & Gesamtenergiedurchlassgrad des Glases ohne Sonnenschutz
+g_{tot}& --- & Tatsächlicher Gesamtenergiedurchlassgrad mit Sonnenschutz \\
+g& --- & Gesamtenergiedurchlassgrad des Glases ohne Sonnenschutz
     \end{symbols}
 \end{formelbox}
 
@@ -492,6 +538,10 @@
         \text{Jalousie 45°} &: F_c = 0,25-0,30 \\
         \text{Markise} &: F_c = 0,25-0,30
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         F_c& --- & Abminderungsfaktor Sonnenschutz
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{3.2 Sonneneintragskennwert}
@@ -502,11 +552,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $A_w$ & \unit{m^2} & Fensterfläche (lichte Rohbaumaße) \\
-        $g$ & --- & Gesamtenergiedurchlassgrad \\
-        $F_C$ & --- & Abminderungsfaktor Sonnenschutz \\
-        $A_G$ & \unit{m^2} & Grundfläche (lichte Rohbaumaße) \\
-        $N$ & --- & Anzahl der Seitenwände (meist 4)
+A_w& \eh{m^2} & Fensterfläche (lichte Rohbaumaße) \\
+g& --- & Gesamtenergiedurchlassgrad \\
+F_C& --- & Abminderungsfaktor Sonnenschutz \\
+A_G& \eh{m^2} & Grundfläche (lichte Rohbaumaße) \\
+N& --- & Anzahl der Seitenwände (meist 4)
     \end{symbols}
 \end{formelbox}
 
@@ -516,12 +566,12 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $S_1$ & --- & Nachtlüftung und Bauart \\
-        $S_2$ & --- & Fensteranteil \\
-        $S_3$ & --- & Sonnenschutzglas \\
-        $S_4$ & --- & Fensterneigung \\
-        $S_5$ & --- & Orientierung \\
-        $S_6$ & --- & Einsatz passiver Kühlung
+S_1& --- & Nachtlüftung und Bauart \\
+S_2& --- & Fensteranteil \\
+S_3& --- & Sonnenschutzglas \\
+S_4& --- & Fensterneigung \\
+S_5& --- & Orientierung \\
+S_6& --- & Einsatz passiver Kühlung
     \end{symbols}
 \end{formelbox}
 
@@ -532,8 +582,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $a$ & --- & Wohngebäude: $0,060$; Nichtwohngebäude: $0,030$ \\
-        $b$ & --- & Wohngebäude: $0,231$; Nichtwohngebäude: $0,115$
+a& --- & Wohngebäude: $0,060$; Nichtwohngebäude: $0,030$ \\
+b& --- & Wohngebäude: $0,231$; Nichtwohngebäude: $0,115$
     \end{symbols}
 \end{formelbox}
 
@@ -541,6 +591,10 @@
     \begin{align*}
         f_{WG} & \leq \text{erf. } f_{WG}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         f_{WG}& --- & Fensterflächenanteil
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Effektive Wärmespeicherkapazität}
@@ -549,14 +603,14 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $C_{wirk}$ & \unit{Wh/K} & Effektive Wärmespeicherkapazität \\
-        $\rho_i$ & \unit{kg/m^3} & Rohdichte der Schicht \\
-        $d_i$ & \unit{m} & Schichtdicke \\
-        $A_i$ & \unit{m^2} & Fläche der Schicht \\
-        $c_i$ & \unit{Wh/(kg\cdot K)} & Spezifische Wärmekapazität
+C_{wirk}& \eh{Wh/K} & Effektive Wärmespeicherkapazität \\
+\rho_i& \eh{kg/m^3} & Rohdichte der Schicht \\
+d_i& \eh{m} & Schichtdicke \\
+A_i& \eh{m^2} & Fläche der Schicht \\
+c_i& \eh{Wh/(kg\cdot K)} & Spezifische Wärmekapazität
     \end{symbols}
     \begin{itemize}
-        \item Mittlere Bauart: $50 \leq C_{wirk}/A_G \leq 130$ \unit{Wh/(K\cdot m^2)}
+        \item Mittlere Bauart: $50 \leq C_{wirk}/A_G \leq 130$ \eh{Wh/(K\cdot m^2)}
     \end{itemize}
 \end{formelbox}
 
@@ -576,12 +630,12 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $p$ & \unit{Pa} & Druck \\
-        $V$ & \unit{m^3} & Volumen \\
-        $T$ & \unit{K} & Temperatur \\
-        $R$ & \unit{J/(mol\cdot K)} & Allgemeine Gaskonstante ($8,31$) \\
-        $R_S$ & \unit{J/(kg\cdot K)} & Spezifische Gaskonstante \\
-        $R_D$ & \unit{J/(kg\cdot K)} & Gaskonstante für Wasserdampf ($461,5$)
+p& \eh{Pa} & Druck \\
+V& \eh{m^3} & Volumen \\
+T& \eh{K} & Temperatur \\
+R& \eh{J/(mol\cdot K)} & Allgemeine Gaskonstante ($8,31$) \\
+R_S& \eh{J/(kg\cdot K)} & Spezifische Gaskonstante \\
+R_D& \eh{J/(kg\cdot K)} & Gaskonstante für Wasserdampf ($461,5$)
     \end{symbols}
 \end{formelbox}
 
@@ -592,14 +646,23 @@
         p_s & = 610,5 \cdot \exp\left(\frac{17,269 \cdot \vartheta}{237,3 + \vartheta}\right) \quad \text{für } \vartheta \geq 0\gradC \\
         p_s & = 610,5 \cdot \exp\left(\frac{21,875 \cdot \vartheta}{265,5 + \vartheta}\right) \quad \text{für } \vartheta < 0\gradC
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         p_s& \eh{Pa} & Sättigungsdampfdruck \\
+         \vartheta& \eh{\degree C} & Temperatur
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{4.3 Luftfeuchte}
 
 \begin{formelbox}{Absolute Luftfeuchte}
     \begin{align*}
-        \rho_D & \text{ in } \unit{kg/m^3} \quad \text{(in Luft enthaltenes Wasser)}
+        \rho_D & \text{ in } \eh{kg/m^3} \quad \text{(in Luft enthaltenes Wasser)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \rho_D& \eh{kg/m^3} & Dampfdichte / absolute Luftfeuchte
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Relative Luftfeuchte}
@@ -608,11 +671,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\Phi$ & --- & Relative Luftfeuchte \\
-        $\rho_D$ & \unit{kg/m^3} & Dampfdichte \\
-        $\rho_s$ & \unit{kg/m^3} & Sättigungsdampfdichte \\
-        $p_D$ & \unit{Pa} & Dampfdruck \\
-        $p_s$ & \unit{Pa} & Sättigungsdampfdruck
+\Phi& --- & Relative Luftfeuchte \\
+\rho_D& \eh{kg/m^3} & Dampfdichte \\
+\rho_s& \eh{kg/m^3} & Sättigungsdampfdichte \\
+p_D& \eh{Pa} & Dampfdruck \\
+p_s& \eh{Pa} & Sättigungsdampfdruck
     \end{symbols}
 \end{formelbox}
 
@@ -620,6 +683,13 @@
     \begin{align*}
         p_D & = \rho_D \cdot R_D \cdot T
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         p_D& \eh{Pa} & Dampfdruck \\
+         \rho_D& \eh{kg/m^3} & Dampfdichte \\
+         R_D& \eh{J/(kg\cdot K)} & Gaskonstante für Wasserdampf \\
+         T& \eh{K} & Temperatur
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{4.4 Taupunktberechnung}
@@ -628,24 +698,53 @@
     \begin{align*}
         \tau & = \frac{237,3 \cdot \left(\frac{17,269 \cdot \vartheta_1}{237,3 + \vartheta_1} + \ln \Phi_1\right)}{17,269 - \left(\frac{17,269 \cdot \vartheta_1}{237,3 + \vartheta_1} + \ln \Phi_1\right)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \tau& \eh{\degree C} & Taupunkttemperatur \\
+         \vartheta_1& \eh{\degree C} & Ausgangstemperatur \\
+         \Phi_1& --- & Relative Luftfeuchte
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Temperatur $\vartheta_2$ aus $\vartheta_1$, $\Phi_1$ und $\Phi_2$}
     \begin{align*}
         \vartheta_2 & = \frac{237,3 \cdot \left(\frac{17,269 \cdot \vartheta_1}{237,3 + \vartheta_1} + \ln\left(\frac{\Phi_1}{\Phi_2}\right)\right)}{17,269 - \left(\frac{17,269 \cdot \vartheta_1}{237,3 + \vartheta_1} + \ln\left(\frac{\Phi_1}{\Phi_2}\right)\right)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \vartheta_2& \eh{\degree C} & Temperatur nach Änderung der Feuchte \\
+         \vartheta_1& \eh{\degree C} & Ausgangstemperatur \\
+         \Phi_1& --- & Ausgangsrelative Feuchte \\
+         \Phi_2& --- & Zielrelative Feuchte
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Relative Feuchte $\Phi_2$ aus $\vartheta_1$, $\vartheta_2$ und $\Phi_1$}
     \begin{align*}
         \Phi_2 & = \Phi_1 \cdot \exp\left(\frac{17,269 \cdot \vartheta_1}{237,3 + \vartheta_1} - \frac{17,269 \cdot \vartheta_2}{237,3 + \vartheta_2}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Phi_2& --- & Relative Feuchte nach der Temperaturänderung \\
+         \Phi_1& --- & Ausgangsrelative Feuchte \\
+         \vartheta_1& \eh{\degree C} & Ausgangstemperatur \\
+         \vartheta_2& \eh{\degree C} & Zieltemperatur
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Allgemeine Feuchtebeziehung}
     \begin{align*}
         \Phi_1 \cdot p_{s1}(\theta_1) & = \Phi_2 \cdot p_{s2}(\theta_2)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Phi_1& --- & Relative Feuchte im Zustand 1 \\
+         p_{s1}& \eh{Pa} & Sättigungsdampfdruck bei $\theta_1$ \\
+         \theta_1& \eh{\degree C} & Temperatur Zustand 1 \\
+         \Phi_2& --- & Relative Feuchte im Zustand 2 \\
+         p_{s2}& \eh{Pa} & Sättigungsdampfdruck bei $\theta_2$ \\
+         \theta_2& \eh{\degree C} & Temperatur Zustand 2
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{4.5 Feuchtegleichgewicht und Dampfdiffusion}
@@ -654,6 +753,18 @@
     \begin{align*}
         \Phi_i \cdot p_{si} - \Phi_a \cdot p_{sa} & = \frac{\dot{m}_D \cdot R_D \cdot T_i}{N_L \cdot V}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Phi_i& --- & Relative Feuchte innen \\
+         p_{si}& \eh{Pa} & Sättigungsdampfdruck innen \\
+         \Phi_a& --- & Relative Feuchte außen \\
+         p_{sa}& \eh{Pa} & Sättigungsdampfdruck außen \\
+         \dot{m}_D& \eh{kg/s} & Dampfstrom \\
+         R_D& \eh{J/(kg\cdot K)} & Gaskonstante für Wasserdampf \\
+         T_i& \eh{K} & Innentemperatur \\
+         N_L& --- & Anzahl Lüftungsvorgänge \\
+         V& \eh{m^3} & Volumen
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Dampfstrom}
@@ -664,11 +775,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\dot{m}_D$ & \unit{kg/s} & Dampfstrom \\
-        $\delta_0$ & --- & Dampfdiffusionskoeffizient \\
-        $s_{d\tau}$ & \unit{m} & Diffusionsäquivalente Luftschichtdicke \\
-        $\mu_i$ & --- & Diffusionswiderstandszahl \\
-        $d_i$ & \unit{m} & Schichtdicke
+\dot{m}_D& \eh{kg/s} & Dampfstrom \\
+\delta_0& --- & Dampfdiffusionskoeffizient \\
+s_{d\tau}& \eh{m} & Diffusionsäquivalente Luftschichtdicke \\
+\mu_i& --- & Diffusionswiderstandszahl \\
+d_i& \eh{m} & Schichtdicke
     \end{symbols}
 \end{formelbox}
 
@@ -677,6 +788,16 @@
         \Phi & = \frac{p_d}{p_s} \\
         p_d & = \frac{m_D \cdot R_D \cdot T}{V}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Phi& --- & Relative Luftfeuchte \\
+         p_d& \eh{Pa} & Dampfdruck \\
+         p_s& \eh{Pa} & Sättigungsdampfdruck \\
+         m_D& \eh{kg} & Dampfdampfmasse \\
+         R_D& \eh{J/(kg\cdot K)} & Gaskonstante für Wasserdampf \\
+         T& \eh{K} & Temperatur \\
+         V& \eh{m^3} & Volumen
+    \end{symbols}
 \end{formelbox}
 
 % ==============================================================================
@@ -692,8 +813,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $H_V$ & \unit{W/K} & Lüftungswärmeverlustkoeffizient \\
-        $V_e$ & \unit{m^3} & Gebäudevolumen
+H_V& \eh{W/K} & Lüftungswärmeverlustkoeffizient \\
+V_e& \eh{m^3} & Gebäudevolumen
     \end{symbols}
 \end{formelbox}
 
@@ -702,6 +823,12 @@
         \text{Einfamilienwohnhaus} &: n_{50} = 1,0 - 20,0 \quad (1/h) \\
         \text{Mehrfamilienwohnhaus} &: n_{50} = 0,5 - 10,0 \quad (1/h)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         n_{50}& \eh{1/h} & Luftwechselrate bei 50 Pa Druckdifferenz \\
+         \text{MFH}& --- & Mehrfamilienwohnhaus \\
+         \text{EFH}& --- & Einfamilienwohnhaus
+    \end{symbols}
     \begin{itemize}
         \item sehr dicht: $0,5 - 2,0$ (MFH), $1,0 - 3,0$ (EFH)
         \item mittel dicht: $2,0 - 4,0$ (MFH), $3,0 - 8,0$ (EFH)
@@ -719,23 +846,49 @@
 
 \begin{formelbox}{Allgemeine Pegelgrößen}
     \begin{align*}
-        L_w & = 10 \cdot \log\left(\frac{P}{P_0}\right), \quad P_0 = 10^{-12} \unit{W} \\
-        L_I & = 10 \cdot \log\left(\frac{I}{I_0}\right), \quad I_0 = 10^{-12} \unit{W/m^2} \\
-        L_p & = 10 \cdot \log\left(\frac{p^2}{p_0^2}\right), \quad p_0 = 2 \cdot 10^{-5} \unit{Pa} \\
-        L_v & = 10 \cdot \log\left(\frac{v^2}{v_0^2}\right), \quad v_0 = 5 \cdot 10^{-8} \unit{m/s}
+        L_w & = 10 \cdot \log\left(\frac{P}{P_0}\right), \quad P_0 = 10^{-12} \eh{W} \\
+        L_I & = 10 \cdot \log\left(\frac{I}{I_0}\right), \quad I_0 = 10^{-12} \eh{W/m^2} \\
+        L_p & = 10 \cdot \log\left(\frac{p^2}{p_0^2}\right), \quad p_0 = 2 \cdot 10^{-5} \eh{Pa} \\
+        L_v & = 10 \cdot \log\left(\frac{v^2}{v_0^2}\right), \quad v_0 = 5 \cdot 10^{-8} \eh{m/s}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L_w& \eh{dB} & Schallleistungspegel \\
+         P& \eh{W} & Schallleistung \\
+         P_0& \eh{W} & Referenzschallleistung \\
+         L_I& \eh{dB} & Schallintensitätspegel \\
+         I& \eh{W/m^2} & Schallintensität \\
+         I_0& \eh{W/m^2} & Referenzintensität \\
+         L_p& \eh{dB} & Schalldruckpegel \\
+         p& \eh{Pa} & Schalldruck \\
+         p_0& \eh{Pa} & Referenzschalldruck \\
+         L_v& \eh{dB} & Schallschnellepegel \\
+         v& \eh{m/s} & Schallschnelle \\
+         v_0& \eh{m/s} & Referenzschallschnelle
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Schallpegeladdition}
     \begin{align*}
         L_{ges} & = 10 \cdot \log\left(\sum_{i=1}^{n} 10^{0,1 \cdot L_i}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L_{ges}& \eh{dB} & Gesamtschallpegel \\
+         L_i& \eh{dB} & Einzelpegel
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{A-bewerteter Schallpegel}
     \begin{align*}
         L_{dB-A} & = L_{dB} + \Delta L
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L_{dB-A}& \eh{dB} & A-bewerteter Schallpegel \\
+         L_{dB}& \eh{dB} & Schallpegel ohne A-Bewertung \\
+         \Delta L& \eh{dB} & Korrekturwert der A-Bewertung
+    \end{symbols}
     \begin{itemize}
         \item A-Bewertung nach DIN EN 61672-1
         \item $\Delta L$ frequenzabhängig nach Tabellen
@@ -748,28 +901,28 @@
     \begin{align*}
         I(r) & = \frac{P}{4\pi r^2} \\
         L(r) & = L_w - 10 \cdot \log(4\pi r^2) \\
-        L(1\unit{m}) & = L_w - 11 \unit{dB} \\
+        L(1\eh{m}) & = L_w - 11 \eh{dB} \\
         L(r_2) & = L(r_1) - 20 \cdot \log\left(\frac{r_2}{r_1}\right)
     \end{align*}
     \tcblower
     \begin{symbols}
-        $I$ & \unit{W/m^2} & Schallintensität \\
-        $P$ & \unit{W} & Schallleistung \\
-        $r$ & \unit{m} & Abstand \\
-        $\Delta L$ & \unit{dB} & Pegelabnahme: $20\log(r_2/r_1)$
+I& \eh{W/m^2} & Schallintensität \\
+P& \eh{W} & Schallleistung \\
+r& \eh{m} & Abstand \\
+\Delta L& \eh{dB} & Pegelabnahme: $20\log(r_2/r_1)$
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Linienquelle}
     \begin{align*}
         I & = \frac{P'}{4a} \\
-        L(1\unit{m}) & = L_w - 11 \unit{dB} \\
+        L(1\eh{m}) & = L_w - 11 \eh{dB} \\
         L(r_2) & = L(r_1) - 10 \cdot \log\left(\frac{r_2}{r_1}\right)
     \end{align*}
     \tcblower
     \begin{symbols}
-        $P'$ & \unit{W/m} & Schallleistung pro Meter \\
-        $a$ & \unit{m} & Senkrechter Abstand zur Linienquelle
+P'& \eh{W/m} & Schallleistung pro Meter \\
+a& \eh{m} & Senkrechter Abstand zur Linienquelle
     \end{symbols}
 \end{formelbox}
 
@@ -778,6 +931,13 @@
         L(r_2) & = L(r_1) - K \cdot 10 \cdot \log\left(\frac{r_2}{r_1}\right) \\
         K & = 1 \text{ für Linienquelle, } K = 2 \text{ für Punktquelle}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L(r_2)& \eh{dB} & Pegel am Abstand $r_2$ \\
+         L(r_1)& \eh{dB} & Pegel am Abstand $r_1$ \\
+         r_1, r_2& \eh{m} & Abstände \\
+         K& --- & Quellenfaktor (1 für Linienquelle, 2 für Punktquelle)
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{6.3 Schallabsorption in Luft}
@@ -789,9 +949,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $m$ & \unit{1/m} & Luftabsorptionskoeffizient \\
-        $\Phi$ & \% & Relative Luftfeuchte \\
-        $f$ & \unit{kHz} & Frequenz
+m& \eh{1/m} & Luftabsorptionskoeffizient \\
+\Phi& \% & Relative Luftfeuchte \\
+f& \eh{kHz} & Frequenz
     \end{symbols}
 \end{formelbox}
 
@@ -799,6 +959,13 @@
     \begin{align*}
         L(r_2) & = L(r_1) - 20 \cdot \log\left(\frac{r_2}{r_1}\right) - 4,343 \cdot m \cdot (r_2 - r_1)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L(r_2)& \eh{dB} & Schalldruckpegel am Abstand $r_2$ \\
+         L(r_1)& \eh{dB} & Schalldruckpegel am Abstand $r_1$ \\
+         r_1, r_2& \eh{m} & Abstände \\
+         m& \eh{1/m} & Luftabsorptionskoeffizient
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{6.4 Reflexion}
@@ -810,7 +977,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $Z$ & \unit{kg/(m^2\cdot s)} & Schallkennimpedanz
+Z& \eh{kg/(m^2\cdot s)} & Schallkennimpedanz
     \end{symbols}
 \end{formelbox}
 
@@ -818,6 +985,13 @@
     \begin{align*}
         r & = \frac{Z_2 \cos\phi - Z_1}{Z_2 \cos\phi + Z_1}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         r& --- & Reflexionsfaktor \\
+         Z_1& \eh{kg/(m^2\cdot s)} & Schallkennimpedanz des ersten Mediums \\
+         Z_2& \eh{kg/(m^2\cdot s)} & Schallkennimpedanz des zweiten Mediums \\
+         \phi& \eh{rad} & Einfallswinkel
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Gesamtschallpegel bei Reflexion}
@@ -828,9 +1002,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $L_0$ & \unit{dB} & Pegel im Abstand $r_0$ \\
-        $\alpha$ & --- & Absorptionsgrad \\
-        $\rho = 1 - \alpha$ & --- & Reflexionsgrad
+L_0& \eh{dB} & Pegel im Abstand $r_0$ \\
+\alpha& --- & Absorptionsgrad \\
+\rho = 1 - \alpha& --- & Reflexionsgrad
     \end{symbols}
 \end{formelbox}
 
@@ -843,10 +1017,10 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $z$ & \unit{m} & Umweg \\
-        $A+B$ & \unit{m} & Abstand über Hindernis \\
-        $a+b$ & \unit{m} & Direkter Abstand \\
-        $h$ & \unit{m} & Höhe des Hindernisses
+z& \eh{m} & Umweg \\
+A+B& \eh{m} & Abstand über Hindernis \\
+a+b& \eh{m} & Direkter Abstand \\
+h& \eh{m} & Höhe des Hindernisses
     \end{symbols}
 \end{formelbox}
 
@@ -856,8 +1030,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $N$ & --- & Fresnelzahl \\
-        $\lambda$ & \unit{m} & Wellenlänge
+N& --- & Fresnelzahl \\
+\lambda& \eh{m} & Wellenlänge
     \end{symbols}
 \end{formelbox}
 
@@ -868,16 +1042,21 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $T$ & --- & Transmissionsgrad \\
-        $\Delta L_z$ & \unit{dB} & Pegelminderung durch Umweg
+T& --- & Transmissionsgrad \\
+\Delta L_z& \eh{dB} & Pegelminderung durch Umweg
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Gemittelte Schallbeugung}
     \begin{align*}
-        \text{Straßenlärm, Linienquelle:} & \quad \Delta L_z = 10 \cdot \log\left(1 + 80 \cdot \frac{z}{\unit{m}}\right) \\
-        \text{Schienenlärm, Punktquelle:} & \quad \Delta L_z = 10 \cdot \log\left(1 + 80 \cdot \frac{z}{\unit{m}}\right)
+        \text{Straßenlärm, Linienquelle:} & \quad \Delta L_z = 10 \cdot \log\left(1 + 80 \cdot \frac{z}{\eh{m}}\right) \\
+        \text{Schienenlärm, Punktquelle:} & \quad \Delta L_z = 10 \cdot \log\left(1 + 80 \cdot \frac{z}{\eh{m}}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Delta L_z& \eh{dB} & Pegelminderung durch Beugung \\
+         z& \eh{m} & Umweg über das Hindernis
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{6.6 Raumakustik}
@@ -888,11 +1067,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $A_f$ & \unit{m^2} & Äquivalente Absorptionsfläche \\
-        $S_i$ & \unit{m^2} & Oberfläche des Bauteils \\
-        $\alpha_{i,f}$ & --- & Absorptionsgrad bei Frequenz $f$ \\
-        $m_f$ & \unit{1/m} & Luftabsorptionskoeffizient \\
-        $V$ & \unit{m^3} & Raumvolumen
+A_f& \eh{m^2} & Äquivalente Absorptionsfläche \\
+S_i& \eh{m^2} & Oberfläche des Bauteils \\
+\alpha_{i,f}& --- & Absorptionsgrad bei Frequenz $f$ \\
+m_f& \eh{1/m} & Luftabsorptionskoeffizient \\
+V& \eh{m^3} & Raumvolumen
     \end{symbols}
 \end{formelbox}
 
@@ -902,7 +1081,7 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $S$ & \unit{m^2} & Gesamtoberfläche
+S& \eh{m^2} & Gesamtoberfläche
     \end{symbols}
 \end{formelbox}
 
@@ -910,24 +1089,46 @@
     \begin{align*}
         T_{60,Sab} & = 0,161 \cdot \frac{V}{A_f}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         T_{60,Sab}& \eh{s} & Nachhallzeit nach Sabine \\
+         V& \eh{m^3} & Raumvolumen \\
+         A_f& \eh{m^2} & Äquivalente Absorptionsfläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Nachhallzeit nach Eyring}
     \begin{align*}
         T_{60,Eyr} & = 0,161 \cdot \frac{V}{S \cdot (-\ln(1 - \overline{\alpha}))}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         T_{60,Eyr}& \eh{s} & Nachhallzeit nach Eyring \\
+         V& \eh{m^3} & Raumvolumen \\
+         S& \eh{m^2} & Gesamtoberfläche \\
+         \overline{\alpha}& --- & Mittlerer Absorptionsgrad
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Zusammenhang Sabine/Eyring}
     \begin{align*}
         \overline{\alpha}_{Eyring} & = -\ln(1 - \overline{\alpha}_{Sabine})
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \overline{\alpha}_{Eyring}& --- & Korrigierter mittlerer Absorptionsgrad nach Eyring \\
+         \overline{\alpha}_{Sabine}& --- & Mittlerer Absorptionsgrad nach Sabine
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Hallradius}
     \begin{align*}
         r_h & \text{ ist der Abstand, bei dem Direktschall und Diffusschall gleich laut sind}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         r_h& \eh{m} & Hallradius
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Gesamtintensität im semi-diffusen Schallfeld}
@@ -936,8 +1137,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $I$ & \unit{W/m^2} & Gesamtintensität \\
-        $P$ & \unit{W} & Schallleistung
+I& \eh{W/m^2} & Gesamtintensität \\
+P& \eh{W} & Schallleistung
     \end{symbols}
 \end{formelbox}
 
@@ -945,24 +1146,50 @@
     \begin{align*}
         L & = L_w + 10 \cdot \log\left(\frac{1}{4\pi r^2} + \frac{4(1 - \overline{\alpha})}{A}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L& \eh{dB} & Gesamtpegel \\
+         L_w& \eh{dB} & Schallleistungspegel \\
+         r& \eh{m} & Abstand \\
+         \overline{\alpha}& --- & Mittlerer Absorptionsgrad \\
+         A& \eh{m^2} & Fläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Intensität im stationären diffusen Schallfeld}
     \begin{align*}
         I & = \frac{4P}{A}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         I& \eh{W/m^2} & Intensität \\
+         P& \eh{W} & Schallleistung \\
+         A& \eh{m^2} & Fläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Pegelkorrektur bei Absorption}
     \begin{align*}
         \Delta L & = -10 \cdot \log\left(\frac{A_{nach}}{A_{vor}}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \Delta L& \eh{dB} & Pegelkorrektur \\
+         A_{nach}& \eh{m^2} & Absorptionsfläche nach der Änderung \\
+         A_{vor}& \eh{m^2} & Absorptionsfläche vor der Änderung
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Pegel im diffusen Schallfeld}
     \begin{align*}
-        L & = L_w + 6 - 10 \cdot \log\left(\frac{A}{1\unit{m^2}}\right)
+        L & = L_w + 6 - 10 \cdot \log\left(\frac{A}{1\eh{m^2}}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         L& \eh{dB} & Schallpegel \\
+         L_w& \eh{dB} & Schallleistungspegel \\
+         A& \eh{m^2} & Absorptionsfläche
+    \end{symbols}
 \end{formelbox}
 
 \mysubsection{6.7 Schalldämmung}
@@ -974,30 +1201,35 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $R$ & \unit{dB} & Schalldämmmaß \\
-        $T$ & --- & Transmissionsgrad \\
-        $L_S$ & \unit{dB} & Pegel im Senderraum \\
-        $L_E$ & \unit{dB} & Pegel im Empfangsraum \\
-        $S$ & \unit{m^2} & Fläche der Trennwand \\
-        $A_E$ & \unit{m^2} & Äquivalente Absorptionsfläche im Empfangsraum
+R& \eh{dB} & Schalldämmmaß \\
+T& --- & Transmissionsgrad \\
+L_S& \eh{dB} & Pegel im Senderraum \\
+L_E& \eh{dB} & Pegel im Empfangsraum \\
+S& \eh{m^2} & Fläche der Trennwand \\
+A_E& \eh{m^2} & Äquivalente Absorptionsfläche im Empfangsraum
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Massegesetz (einschalige, biegeweiche Wand)}
     \begin{align*}
-        R & = 20 \cdot \log\left(\frac{m'}{\unit{kg/m^2}} \cdot \frac{f}{\unit{Hz}}\right) - 45 \unit{dB}
+        R & = 20 \cdot \log\left(\frac{m'}{\eh{kg/m^2}} \cdot \frac{f}{\eh{Hz}}\right) - 45 \eh{dB}
     \end{align*}
     \tcblower
     \begin{symbols}
-        $m'$ & \unit{kg/m^2} & Flächenbezogene Masse \\
-        $f$ & \unit{Hz} & Frequenz
+m'& \eh{kg/m^2} & Flächenbezogene Masse \\
+f& \eh{Hz} & Frequenz
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Schätzformel bei 700 Hz Mittenfrequenz}
     \begin{align*}
-        R & = 12 + 20 \cdot \log\left(\frac{m'}{\unit{kg/m^2}}\right)
+        R & = 12 + 20 \cdot \log\left(\frac{m'}{\eh{kg/m^2}}\right)
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         R& \eh{dB} & Schalldämmmaß \\
+         m'& \eh{kg/m^2} & Flächenbezogene Masse
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Flächenbezogene Masse}
@@ -1006,19 +1238,19 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\rho$ & \unit{kg/m^3} & Dichte des Bauteils \\
-        $d$ & \unit{m} & Dicke des Bauteils
+\rho& \eh{kg/m^3} & Dichte des Bauteils \\
+d& \eh{m} & Dicke des Bauteils
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Doppelschalen-Resonanzfrequenz}
     \begin{align*}
-        f_{res} & = \frac{60}{\sqrt{\frac{m' \cdot d}{\unit{kg/m^2} \cdot \unit{m}}}} \unit{Hz}
+        f_{res} & = \frac{60}{\sqrt{\frac{m' \cdot d}{\eh{kg/m^2} \cdot \eh{m}}}} \eh{Hz}
     \end{align*}
     \tcblower
     \begin{symbols}
-        $m'$ & \unit{kg/m^2} & Reduzierte Flächenmasse \\
-        $d$ & \unit{m} & Abstand zwischen den Schalen
+m'& \eh{kg/m^2} & Reduzierte Flächenmasse \\
+d& \eh{m} & Abstand zwischen den Schalen
     \end{symbols}
 \end{formelbox}
 
@@ -1027,6 +1259,12 @@
         \frac{1}{m'} & = \frac{1}{m_1'} + \frac{1}{m_2'} \\
         m' & = \frac{m_1' \cdot m_2'}{m_1' + m_2'}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         m'& \eh{kg/m^2} & Reduzierte Flächenmasse \\
+         m_1'& \eh{kg/m^2} & Flächenmasse der ersten Schale \\
+         m_2'& \eh{kg/m^2} & Flächenmasse der zweiten Schale
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Federkonstante einer Luftschicht}
@@ -1035,9 +1273,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $s'$ & \unit{N/m^3} & Federkonstante pro Fläche \\
-        $E$ & \unit{Pa} & Elastizitätsmodul der Luft \\
-        $d$ & \unit{m} & Dicke der Luftschicht
+s'& \eh{N/m^3} & Federkonstante pro Fläche \\
+E& \eh{Pa} & Elastizitätsmodul der Luft \\
+d& \eh{m} & Dicke der Luftschicht
     \end{symbols}
 \end{formelbox}
 
@@ -1046,14 +1284,28 @@
         \omega_{res} & = \sqrt{\frac{s'}{m'}} \\
         f_{res} & = \frac{\omega_{res}}{2\pi}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \omega_{res}& \eh{rad/s} & Resonanzkreisfrequenz \\
+         s'& \eh{N/m^3} & Federkonstante pro Fläche \\
+         m'& \eh{kg/m^2} & Reduzierte Flächenmasse \\
+         f_{res}& \eh{Hz} & Resonanzfrequenz
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Doppelglasscheiben mit Luftschicht}
     \begin{align*}
-        f_{res} & = 1,2 \cdot \sqrt{\frac{1}{d} \cdot \left(\frac{1}{d_1} + \frac{1}{d_2}\right)} \unit{kHz}
+        f_{res} & = 1,2 \cdot \sqrt{\frac{1}{d} \cdot \left(\frac{1}{d_1} + \frac{1}{d_2}\right)} \eh{kHz}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         f_{res}& \eh{kHz} & Resonanzfrequenz der Doppelglasscheibe \\
+         d& \eh{mm} & Abstand zwischen den Scheiben \\
+         d_1, d_2& \eh{mm} & Dicke der Scheiben \\
+         \rho_{Glas}& \eh{kg/m^3} & Dichte des Glases
+    \end{symbols}
     \begin{itemize}
-        \item $\rho_{Glas} = 2500 \unit{kg/m^3}$
+        \item $\rho_{Glas} = 2500 \eh{kg/m^3}$
         \item $d$: Abstand zwischen den Scheiben [mm]
         \item $d_1, d_2$: Dicke der Scheiben [mm]
     \end{itemize}
@@ -1066,10 +1318,10 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $n$ & --- & $n$-te Resonanz \\
-        $c$ & \unit{m/s} & Schallgeschwindigkeit \\
-        $d$ & \unit{m} & Dicke des Hohlraums \\
-        $\lambda$ & \unit{m} & Wellenlänge
+n& --- & $n$-te Resonanz \\
+c& \eh{m/s} & Schallgeschwindigkeit \\
+d& \eh{m} & Dicke des Hohlraums \\
+\lambda& \eh{m} & Wellenlänge
     \end{symbols}
 \end{formelbox}
 
@@ -1085,8 +1337,8 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $S$ & \unit{sone} & Lautheit \\
-        $L_R$ & \unit{phon} & Lautstärkepegel
+S& \eh{sone} & Lautheit \\
+L_R& \eh{phon} & Lautstärkepegel
     \end{symbols}
     \begin{itemize}
         \item Bei mehreren Geräuschen gleicher Frequenz: Gesamtpegel berechnen, dann in Sone umrechnen
@@ -1101,22 +1353,22 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $L_{eq}$ & \unit{dB} & Äquivalenter Dauerschallpegel \\
-        $T$ & \unit{s} & Gesamtzeitraum \\
-        $t_j$ & \unit{s} & Zeitanteil des Pegels $L_j$ \\
-        $q_j$ & --- & Zeitanteil
+L_{eq}& \eh{dB} & Äquivalenter Dauerschallpegel \\
+T& \eh{s} & Gesamtzeitraum \\
+t_j& \eh{s} & Zeitanteil des Pegels $L_j$ \\
+q_j& --- & Zeitanteil
     \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Wirkpegel}
     \begin{align*}
-        L_{wirk} & = 10 \cdot \log\left(\frac{1}{T} \left((n \cdot 5\unit{s}) \cdot 10^{0,1 \cdot L_{laut}} + (T - n \cdot 5\unit{s}) \cdot 10^{0,1 \cdot L_{leise}}\right)\right)
+        L_{wirk} & = 10 \cdot \log\left(\frac{1}{T} \left((n \cdot 5\eh{s}) \cdot 10^{0,1 \cdot L_{laut}} + (T - n \cdot 5\eh{s}) \cdot 10^{0,1 \cdot L_{leise}}\right)\right)
     \end{align*}
     \tcblower
     \begin{symbols}
-        $L_{wirk}$ & \unit{dB} & Wirkpegel \\
-        $n$ & --- & Anzahl der lauten Peaks \\
-        $5\unit{s}$ & --- & Verlängerung jedes lauten Ereignisses
+L_{wirk}& \eh{dB} & Wirkpegel \\
+n& --- & Anzahl der lauten Peaks \\
+5\eh{s}& --- & Verlängerung jedes lauten Ereignisses
     \end{symbols}
 \end{formelbox}
 
@@ -1133,11 +1385,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\omega$ & \unit{1/s} $\equiv$ \unit{Hz} & Kreisfrequenz \\
-        $T$ & \unit{s} & Periodendauer \\
-        $f$ & \unit{Hz} & Frequenz \\
-        $D$ & \unit{N/m} & Federkonstante \\
-        $m$ & \unit{kg} & Masse
+\omega& \eh{1/s} $\equiv$ \eh{Hz} & Kreisfrequenz \\
+T& \eh{s} & Periodendauer \\
+f& \eh{Hz} & Frequenz \\
+D& \eh{N/m} & Federkonstante \\
+m& \eh{kg} & Masse
     \end{symbols}
 \end{formelbox}
 
@@ -1149,11 +1401,11 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $y(t)$ & \unit{m} & Auslenkung \\
-        $\dot{y}(t)$ & \unit{m/s} & Geschwindigkeit \\
-        $\ddot{y}(t)$ & \unit{m/s^2} & Beschleunigung \\
-        $y_0$ & \unit{m} & Amplitude \\
-        $\varphi$ & \unit{rad} & Phasenverschiebung
+y(t)& \eh{m} & Auslenkung \\
+\dot{y}(t)& \eh{m/s} & Geschwindigkeit \\
+\ddot{y}(t)& \eh{m/s^2} & Beschleunigung \\
+y_0& \eh{m} & Amplitude \\
+\varphi& \eh{rad} & Phasenverschiebung
     \end{symbols}
 \end{formelbox}
 
@@ -1174,6 +1426,12 @@
         \text{Mikrowellen} & 1 \text{ mm} - 1 \text{ m} \\
         \text{Radio} & 1 \text{ m} - 10 \text{ km}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \lambda& \eh{nm/mm/m} & Wellenlängenbereich des elektromagnetischen Spektrums \\
+         \text{VIS}& --- & Sichtbarer Bereich des Lichts \\
+         \text{MIR/FIR}& --- & Mittlere / ferne Infrarotbereiche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Strahlungsintensität}
@@ -1182,9 +1440,9 @@
     \end{align*}
     \tcblower
     \begin{symbols}
-        $\vec{I}$ & \unit{W/m^2} & Intensitätsvektor \\
-        $\vec{E}$ & \unit{V/m} & Elektrische Feldstärke \\
-        $\vec{H}$ & \unit{A/m} & Magnetische Feldstärke
+\vec{I}& \eh{W/m^2} & Intensitätsvektor \\
+\vec{E}& \eh{V/m} & Elektrische Feldstärke \\
+\vec{H}& \eh{A/m} & Magnetische Feldstärke
     \end{symbols}
 \end{formelbox}
 
@@ -1193,13 +1451,28 @@
         B & = \frac{I}{4} \\
         \vec{B} & = \vec{I} \cdot \cos\theta
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         B& \eh{W/m^2} & Bestrahlungsstärke \\
+         I& \eh{W/m^2} & Strahlungsintensität \\
+         \vec{B}& \eh{W/m^2} & Bestrahlungsvektor \\
+         \theta& \eh{rad} & Winkel zwischen Intensitätsvektor und Fläche
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Plancksche Konstanten}
     \begin{align*}
-        2\pi hc^2 & = 3,741 \cdot 10^{-16} \unit{W\cdot m^2} \\
-        \frac{hc}{k} & = 1,438 \cdot 10^{-2} \unit{m\cdot K}
+        2\pi hc^2 & = 3,741 \cdot 10^{-16} \eh{W\cdot m^2} \\
+        \frac{hc}{k} & = 1,438 \cdot 10^{-2} \eh{m\cdot K}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         h& \eh{J\cdot s} & Plancksches Wirkungsquantum \\
+         c& \eh{m/s} & Lichtgeschwindigkeit \\
+         k& \eh{J/K} & Boltzmannkonstante \\
+         2\pi hc^2& \eh{W\cdot m^2} & Konstante zur Beschreibung der Strahlungsdichte \\
+         \frac{hc}{k}& \eh{m\cdot K} & charakteristische Wellenlänge-Temperatur-Konstante
+    \end{symbols}
 \end{formelbox}
 
 % ==============================================================================
@@ -1215,6 +1488,13 @@
         R_D & = 461,5 \eh{J/(kg\cdot K)} & \text{(Wasserdampf)} \\
         c_W & = 4,182 \eh{J/(g\cdot K)} & \text{(Spezifische Wärmekapazität Wasser)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         \sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante \\
+         R& \eh{J/(mol\cdot K)} & Allgemeine Gaskonstante \\
+         R_D& \eh{J/(kg\cdot K)} & Spezifische Gaskonstante für Wasserdampf \\
+         c_W& \eh{J/(g\cdot K)} & Spezifische Wärmekapazität von Wasser
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Wärmeübergangswiderstände}
@@ -1224,6 +1504,11 @@
         R_{si} & = 0,17 \eh{m^2 K/W} & \text{(strömend, Wärmestrom nach unten)} \\
         R_{se} & = 0,04 \eh{m^2 K/W} & \text{(außen)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         R_{si}& \eh{m^2 K/W} & Innenseitiger Wärmeübergangswiderstand \\
+         R_{se}& \eh{m^2 K/W} & Außenseitiger Wärmeübergangswiderstand
+    \end{symbols}
 \end{formelbox}
 
 \begin{formelbox}{Solarkonstante}
@@ -1231,6 +1516,11 @@
         q_{max} & = 1,3 \eh{kW/m^2} & \text{(oberhalb Atmosphäre)} \\
         q_{max} & = 1,0 \eh{kW/m^2} & \text{(unterhalb Atmosphäre)}
     \end{align*}
+    \tcblower
+    \begin{symbols}
+         q_{max}& \eh{kW/m^2} & Solare Einstrahlungsstärke \\
+         \text{(oberhalb/unterhalb Atmosphäre)}& --- & Strahlungswerte für unterschiedliche Bedingungen
+    \end{symbols}
 \end{formelbox}
 
 \end{multicols*}
