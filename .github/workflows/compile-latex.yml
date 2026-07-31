@@ -1,0 +1,30 @@
+name: Build LaTeX Document
+
+on:
+  push:
+    branches:
+      - main       # Triggers whenever you push changes to the main branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout your repository files
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      # 2. Compile your LaTeX file to PDF
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: Bauphysik_Formelsammlung.tex
+
+      # 3. Save the PDF so you can download it from the Actions tab
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Generated-PDF
+          path: Bauphysik_Formelsammlung.pdf      # Output filename matches your .tex file base name
