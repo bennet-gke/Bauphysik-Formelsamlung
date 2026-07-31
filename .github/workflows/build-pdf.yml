@@ -16,6 +16,10 @@ jobs:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
+      - name: latexmk installieren
+        run: |
+          tlmgr install latexmk
+
       - name: LaTeX-Dokument kompilieren
         run: |
           latexmk -pdf -interaction=nonstopmode Bauphysik_Formelsammlung.tex
