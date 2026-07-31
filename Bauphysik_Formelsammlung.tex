@@ -1,39 +1,70 @@
 \documentclass[11pt,a4paper]{article}
 
-% Zentrale Layout- und Basis-Einstellungen laden
-\input{../Zentral/praeambel.tex}
+% ==============================================================================
+% 1. LAYOUT & GEOMETRIE
+% ==============================================================================
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm, headheight=40pt]{geometry}
+\usepackage{parskip}   % Absatzabstand statt Einrückung
+\usepackage{setspace}  % Zeilenabstand-Steuerung
+\onehalfspacing        % 1,5-facher Zeilenabstand für optimale Lesbarkeit
+\usepackage{multicol}  % Zweispaltiges Layout für kompakte Formelsammlungen
+\usepackage{enumitem}  % Flexible & kompakte Aufzählungen
+\setlist[itemize]{label=-, leftmargin=*, noitemsep}
 
-% Fachspezifische PDF-Metadaten
-\hypersetup{pdftitle={Bauphysik - Formelsammlung}}
+% ==============================================================================
+% 2. SPRACHE, FONTS & TYPOGRAFIE
+% ==============================================================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman, english]{babel}
 
-% --- Mathematik & Bauphysik ---
-\usepackage{newtxmath} % Das Haupt-Mathepaket
+\usepackage{csquotes}    % Sprachspezifische Anführungszeichen (\enquote{})
+\usepackage{microtype}   % Optischer Randausgleich für perfektes Schriftbild
 
-% 1. Fix für \Bbbk Konflikt
-\let\Bbbk\undefined
-\usepackage{amssymb}
-
-% 2. Fix für \openbox Konflikt
-\let\openbox\undefined
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{mathtools}
-\usepackage{cancel}
-\usepackage[locale=DE, per-mode=symbol, separate-uncertainty=true]{siunitx} % Wichtig für korrekte Einheiten
-\usepackage{physics} % Nützliche Makros
-\AtBeginDocument{\RenewCommandCopy\qty\SI} % Behebt Konflikt zwischen physics und siunitx
+% ==============================================================================
+% 3. FARBEN & GRAFIKEN
+% ==============================================================================
+\usepackage[dvipsnames, table, svgnames]{xcolor} % Vor TikZ/tcolorbox laden gegen Option Clashes
+\usepackage{graphicx}
+\usepackage{float}       % Exakte Platzierung von Elementen [H]
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\usepackage[most]{tcolorbox} % Für schöne Hervorhebungs-Boxen
-\usepackage{multicol}        % Für mehrspaltiges Layout
-\usepackage{tabularx}        % Für flexible Tabellen
 
-% --- Fachspezifische Kopfzeile ---
-\rhead{\textbf{\large Bauphysik}\\Formelsammlung}
+% ==============================================================================
+% 4. MATHEMATIK & BAUPHYSIKALISCHE EINHEITEN
+% ==============================================================================
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{cancel}      % Formelglieder durchstreichen
 
-% --- Formel-Box Design (Das "Ultimative" Layout) ---
+% SI-Einheiten nach DIN/ISO
+\usepackage[
+    locale=DE, 
+    per-mode=symbol, 
+    separate-uncertainty=true,
+    range-units=single
+]{siunitx}
+
+% Physics-Paket mit Kompatibilitätsfix für siunitx \qty
+\usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% Physikalische Hilfsmakros
+\providecommand{\eh}[1]{\,[\unit{#1}]}    % Einheiten in Klammern, z. B. \eh{W/m^2K}
+\newcommand{\gradC}{\,\unit{\degree C}}   % Schnelleingabe für Grad Celsius
+
+% ==============================================================================
+% 5. TABELLEN & FORMELBOXEN DESIGN
+% ==============================================================================
+\usepackage{booktabs}  % Typografisch hochwertige Tabellenlinien
+\usepackage{tabularx}  % Automatisch breitenangepasste Spalten
+\usepackage[most]{tcolorbox}
+
+% Design der Bauphysik-Formelboxen
 \newtcolorbox{formelbox}[1]{
     enhanced,
     colback=white,
@@ -49,18 +80,48 @@
     boxsep=0pt,
     toptitle=4pt, bottomtitle=4pt,
     segmentation style={solid, draw=black!20, line width=0.5pt},
-    before skip=10pt,
-    after skip=10pt,
-    % Boxen nicht über Seiten umbrechen
+    before skip=8pt,
+    after skip=8pt,
     unbreakable
 }
 
-% --- Makro für Symbolverzeichnis in Formeln ---
+% Symbolverzeichnis-Umgebung innerhalb der Boxen
 \newenvironment{symbols}{
-    \renewcommand{\arraystretch}{1.2}
+    \renewcommand{\arraystretch}{1.15}
     \tabularx{\linewidth}{@{}l l X@{}}
 }{
     \endtabularx
+}
+
+% ==============================================================================
+% 6. KOPF- UND FUSSZEILEN
+% ==============================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\textbf{\large HCU Hamburg}\vspace{0.1cm}}
+\rhead{\textbf{\large Bauphysik}\\Formelsammlung}
+
+\lfoot{Bennet Geschke}
+\rfoot{Seite \thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ==============================================================================
+% 7. HYPERREF & PDF-METADATEN (IMMER ALS LETZTES PAKET)
+% ==============================================================================
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Bauphysik - Formelsammlung},
+    pdfauthor={Bennet Geschke},
+    pdfsubject={Formelsammlung Bauphysik - HCU Hamburg},
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    filecolor=magenta,      
+    urlcolor=cyan!70!black,
+    citecolor=green!60!black
 }
 
 \title{\vspace{-2cm}\textbf{\Huge Formelsammlung Bauphysik}}
@@ -77,6 +138,7 @@
 
 % Zweispaltiges Layout für kompaktere Formelsammlung
 \begin{multicols*}{2}
+
     \begin{formelbox}{Wärmeenergie}
         \begin{align*}
             c_W    & = 4,182 \eh{J/(g \cdot K)}                          \\
@@ -88,6 +150,7 @@
             $c_W$ & \unit{J/(g\cdot\kelvin)} & Spezifische Wärmekapazität von Wasser \\
         \end{symbols}
     \end{formelbox}
+
     \begin{formelbox}{Wärmeenergie}
         \begin{align*}
             Q & = m \cdot c \cdot \Delta T
@@ -320,7 +383,8 @@
     \begin{formelbox}{Schwingung eines Feder-Masse-Pendels}
         \begin{align*}
             \omega & = \sqrt{\frac{D}{m}}                \\
-            f      & = \frac{\omega}{2\pi} = \frac{1}{T} \\\end{align*}
+            f      & = \frac{\omega}{2\pi} = \frac{1}{T} \\
+        \end{align*}
         \tcblower
         \begin{symbols}
             $\omega$ & \unit{1/s} $\equiv$ \unit{Hz} & Kreisfrequenz\\
@@ -419,7 +483,7 @@
         \end{symbols}
     \end{formelbox}
 
-    \begin{formelbox}{Massegesetzt}
+    \begin{formelbox}{Massegesetz}
         \begin{align*}
             R  & = 20 \cdot \log_{10} \left(\frac{m'}{1 \unit{kg/m^2}}\cdot \frac{f}{1 \unit{Hz}}\right) -45 \\
             m' & = \rho \cdot d                                                                              \\
@@ -433,5 +497,6 @@
             $d$ & \unit{m} & Dicke \\
         \end{symbols}
     \end{formelbox}
+
 \end{multicols*}
 \end{document}
