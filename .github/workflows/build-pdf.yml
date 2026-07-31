@@ -30,6 +30,7 @@ jobs:
 
       - name: PDF committen und pushen
         run: |
+          cd "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Bauphysik_Formelsammlung.pdf
