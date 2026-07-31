@@ -1,0 +1,38 @@
+name: Build PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Bauphysik_Formelsammlung.tex'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Verhindert, dass der Workflow erneut durch den eigenen Push mit [skip ci] gestartet wird
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: LaTeX installieren
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-extra texlive-latex-recommended
+
+      - name: LaTeX-Dokument kompilieren
+        run: |
+          latexmk -pdf -interaction=nonstopmode Bauphysik_Formelsammlung.tex
+
+      - name: PDF committen und pushen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Bauphysik_Formelsammlung.pdf
+          if git diff --staged --quiet; then
+            echo "Keine Änderungen an der PDF – nichts zu committen."
+          else
+            git commit -m "PDF automatisch aktualisiert [skip ci]"
+            git push
+          fi
