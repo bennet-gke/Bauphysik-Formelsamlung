@@ -13,8 +13,6 @@
 
 ### 📖 Zweck dieser Formelsammlung
 
-Diese Formelsammlung wurde als **klausurbegleitendes Nachschlagewerk** für die Bauphysik-Module an der **HafenCity Universität Hamburg (HCU)** erstellt. Sie fasst alle relevanten Formeln, Herleitungen und Zusammenhänge aus der Vorlesung von **Prof. Dr.-Ing. Ingo Weidlich** und **Christian Steuck** zusammen.
-
 Die Bauphysik beschäftigt sich im Kern mit den **Energieflüssen im und durch Gebäude** – sie ist die Grundlage, um Baukonstruktion und Gebäudetechnik richtig zu verstehen. Diese Sammlung deckt die drei großen Säulen des Fachs ab: **Wärme**, **Feuchte** und **Schall**.
 
 ---
@@ -79,16 +77,6 @@ Neben den Formeln enthält diese Sammlung auch:
 
 ---
 
-### 📚 Quellen
-
-Diese Formelsammlung basiert auf:
-
-- Vorlesungsfolien und -videos von Prof. Dr.-Ing. Ingo Weidlich & Christian Steuck
-- Altes Vorlesungsskript von Stephenson/Wellershoff
-- Übungs- und Tutoriumsmaterialien der HCU
-- Begleitliteratur gemäß der ausgegebenen Literaturliste
-
----
 
 ### ⚠️ Hinweis
 
@@ -105,10 +93,6 @@ Diese Sammlung ersetzt **nicht** das eigenständige Verständnis der Zusammenhä
 ## <a id="englisch"></a>🇬🇧 English
 
 ### 📖 Purpose of this Formula Collection
-
-This formula collection was created as a **reference guide for exams** in the Building Physics modules at **HafenCity Universität Hamburg (HCU)**. It summarizes all relevant formulas, derivations, and correlations from the lectures held by **Prof. Dr.-Ing. Ingo Weidlich** and **Christian Steuck**.
-
-At its core, building physics deals with the **energy flows in and through buildings** – it is the foundation for understanding building construction and building services engineering. This collection covers the three major pillars of the subject: **Heat**, **Moisture**, and **Sound**.
 
 ---
 
@@ -169,17 +153,6 @@ In addition to the formulas, this collection also contains:
 - **Exam preparation** – all relevant formulas in one place
 - **Accompanying exercises & tutorials** – quick reference while solving problems
 - **Reference for projects** – especially for the module *Energy-Optimized Building Design*
-
----
-
-### 📚 Sources
-
-This formula collection is based on:
-
-- Lecture slides and videos by Prof. Dr.-Ing. Ingo Weidlich & Christian Steuck
-- Old lecture scripts by Stephenson/Wellershoff
-- Exercise and tutorial materials from HCU
-- Supplementary literature according to the provided reading list
 
 ---
 
