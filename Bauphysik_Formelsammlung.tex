@@ -54,7 +54,7 @@
 \usepackage[
     locale=DE,
     per-mode=symbol,
-    separate-uncertainty=true,
+    uncertainty-mode=separate,
     range-units=single
 ]{siunitx}
 
@@ -299,11 +299,16 @@ U& \eh{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
 
 \begin{formelbox}{Transmissionswärmeverlust}
     \begin{align*}
-        H_T & = U \cdot A
+        H_T & = \sum_{i} U_i \cdot A_i \\[0.5em]
+        U_m & = \frac{H_T}{A_{\text{ges}}} = \frac{\sum_{i} U_i \cdot A_i}{A_{\text{ges}}}
     \end{align*}
     \tcblower
     \begin{symbols}
-H_T& \eh{W/K} & Transmissionswärmeverlust-Koeffizient
+H_T & \eh{W/K} & Transmissionswärmeverlust-Koeffizient \\
+U_m & \eh{W/(m^2K)} & Mittlerer U-Wert \\
+U_i & \eh{W/(m^2K)} & Wärmedurchgangskoeffizient des Bauteils $i$ \\
+A_i & \eh{m^2} & Fläche des Bauteils $i$ \\
+A_{\text{ges}} & \eh{m^2} & Gesamte Hüllfläche
     \end{symbols}
 \end{formelbox}
 
@@ -434,17 +439,24 @@ q& \eh{W/m^2} & Abgestrahlte Intensität \\
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Absorptions-, Emissions-, Reflexions- \& Transmissionsgrad}
+\begin{formelbox}{Absorptions-, Emissions-, Reflexions- \& Transmissionsgrad, Transmissionswärmeverlust}
     \begin{align*}
         \alpha & = \frac{I_A}{I}, \quad \rho = \frac{I_R}{I}, \quad \tau = \frac{I_T}{I} \\
-        \alpha & = \epsilon \quad \text{(Kirchhoff'sches Gesetz)}
+        \alpha & = \epsilon \quad \text{(Kirchhoff'sches Gesetz)} \\[1em]
+        H & = \sum_{i} U_i \cdot A_i \\
+        U_m & = \frac{H}{A_{\text{ges}}} = \frac{\sum_{i} U_i \cdot A_i}{A_{\text{ges}}}
     \end{align*}
     \tcblower
     \begin{symbols}
-\alpha& --- & Absorptionsgrad \\
-\rho& --- & Reflexionsgrad \\
-\tau& --- & Transmissionsgrad \\
-\epsilon& --- & Emissionsgrad
+        \alpha & --- & Absorptionsgrad \\
+        \rho & --- & Reflexionsgrad \\
+        \tau & --- & Transmissionsgrad \\
+        \epsilon & --- & Emissionsgrad \\
+        H & \text{W/K} & Spezifischer Transmissionswärmeverlust \\
+        U_m & \text{W/(m$^2$K)} & Mittlerer U-Wert \\
+        U_i & \text{W/(m$^2$K)} & Wärmedurchgangskoeffizient des Teilbauteils $i$ \\
+        A_i & \text{m$^2$} & Fläche des Teilbauteils $i$ \\
+        A_{\text{ges}} & \text{m$^2$} & Gesamte Hüllfläche
     \end{symbols}
 \end{formelbox}
 
