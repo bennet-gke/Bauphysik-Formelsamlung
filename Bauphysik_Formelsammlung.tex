@@ -359,35 +359,25 @@ U_m& \eh{W/(m^2 K)} & Mittlerer Wärmedurchgangskoeffizient
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Wärmedurchgang (Nebeneinanderliegende Flächen)}
+\begin{formelbox}{Wärmedurchgang (Parallelschaltung / Min. Widerstand)}
     \begin{align*}
-        R_{T,max} & = \frac{1}{U_{min}} \\
-        U_{min} & = \frac{\sum U_j \cdot A_j}{\sum A_j} \\
-        U_j & = \frac{1}{R_j} \\
-        R_j & = R_{si} + \sum R_i + R_{se}
+        R_{T,min} & = R_{si} + \sum_{i} \frac{d_i}{\lambda_{i,\text{äquiv}}} + R_{se} \\[0.5em]
+        \lambda_{i,\text{äquiv}} & = \frac{\sum_{j} \lambda_{i,j} \cdot A_j}{A_{\text{ges}}}
     \end{align*}
     \tcblower
     \begin{symbols}
-U_j& \eh{W/(m^2 K)} & Einzelne Wärmedurchgangskoeffizienten \\
-A_j& \eh{m^2} & Einzelne Flächen
+         R_{T,min}& \eh{m^2 K/W} & Minimaler Gesamt-Wärmedurchgangswiderstand \\
+         R_{si}& \eh{m^2 K/W} & Wärmeübergangswiderstand innen \\
+         R_{se}& \eh{m^2 K/W} & Wärmeübergangswiderstand außen \\
+         d_i& \eh{m} & Dicke der Schicht $i$ \\
+         \lambda_{i,\text{äquiv}}& \eh{W/(m K)} & Äquivalente Wärmeleitfähigkeit der Schicht $i$ \\
+         \lambda_{i,j}& \eh{W/(m K)} & Wärmeleitfähigkeit des Teilbereichs $j$ in Schicht $i$ \\
+         A_j& \eh{m^2} & Fläche des Teilbereichs $j$ \\
+         A_{\text{ges}}& \eh{m^2} & Gesamtfläche des Bauteils ($\sum A_j$)
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Wärmedurchgang (Reihenschaltung)}
-    \begin{align*}
-        R_{T,min} & = R_{si} + \sum \frac{1}{\Lambda_i} + R_{se} \\
-        \Lambda_i & = \frac{\sum \Lambda_j \cdot A_j}{\sum A_j}
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-         R_{T,min}& \eh{m^2 K/W} & Minimaler Wärmedurchgangswiderstand \\
-         R_{si}& \eh{m^2 K/W} & Wärmeübergangswiderstand innen \\
-         R_{se}& \eh{m^2 K/W} & Wärmeübergangswiderstand außen \\
-         \Lambda_i& \eh{W/(m^2 K)} & Wärmedurchlasskoeffizient der Einzelschicht \\
-         \Lambda_j& \eh{W/(m^2 K)} & Wärmedurchlasskoeffizient von Teilflächen \\
-         A_j& \eh{m^2} & Fläche der Teilfläche
-    \end{symbols}
-\end{formelbox}
+
 
 \begin{formelbox}{Wärmebrückenzuschlag}
     \begin{align*}
