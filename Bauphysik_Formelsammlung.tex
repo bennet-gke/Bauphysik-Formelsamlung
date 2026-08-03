@@ -384,20 +384,28 @@ U_m& \eh{W/(m^2 K)} & Mittlerer Wärmedurchgangskoeffizient
 
 
 
-\begin{formelbox}{Wärmebrückenzuschlag}
+\begin{formelbox}{Wärmebrücken \& Gesamter U-Wert}
     \begin{align*}
-        U_{ges} & = U + \Delta U_{WB} \\
-        \Delta U_{WB} & = \frac{1}{A_{ges}} \cdot \left( \sum (l_j \cdot \psi_j) + \sum \chi_k \right)
+        U_{\text{ges}} &= U + \Delta U_{WB} \\[0.5em]
+        {U}_{\text{ges}} &= \frac{H_T}{A_{\text{ges}}} = {U}_{\text{naiv}} + \frac{\sum (l_j \cdot \Psi_j)}{A_{\text{ges}}} \\[0.5em]
+        \Delta U_{WB} &= \frac{1}{A_{\text{ges}}} \cdot \left( \sum (l_j \cdot \Psi_j) + \sum \chi_k \right) \\[0.5em]
+        H_T &= \sum (A_i \cdot U_i) + \sum (l_j \cdot \Psi_j) + \sum \chi_k \\[0.5em]
+        \Delta H_{\Psi, \%} &= \frac{\sum (l_j \cdot \Psi_j)}{H_T} \cdot 100\%
     \end{align*}
     \tcblower
     \begin{symbols}
-\Delta U_{WB}& \eh{W/(m^2 K)} & Wärmebrückenzuschlag \\
-& & $= 0,10$ (ohne Nachweis), $0,05$ (DIN 4108-2) \\
-l_j& \eh{m} & Länge der Wärmebrücke \\
-\psi_j& \eh{W/(m K)} & Psi-Wert der Wärmebrücke \\
-\chi_k& \eh{W/K} & Chi-Wert der Wärmebrücke
+        U_{\text{ges}} & \eh{W/(m^2 K)} & Gesamter mittl. U-Wert inkl. Wärmebrücken \\
+        {U}_{\text{naiv}} & \eh{W/(m^2 K)} & Naiver mittl. U-Wert ohne Wärmebrücken \\
+        \Delta U_{WB}& \eh{W/(m^2 K)} & Wärmebrückenzuschlag \\
+        & & $= 0,10$ (ohne Nachweis), $0,05$ (DIN 4108-2) \\
+        H_T & \eh{W/K} & Transmissionswärmeverlustkoeffizient gesamt \\
+        l_j & \eh{m} & Länge der kantenbezogenen Wärmebrücke $j$ \\
+        \Psi_j & \eh{W/(m K)} & Längenbezogener Wärmedurchgangskoeffizient (Psi-Wert) \\
+        \chi_k & \eh{W/K} & Punktbezogener Wärmedurchgangskoeffizient (Chi-Wert, oft vernachlässigt) \\
+        \Delta H_{\Psi, \%} & \% & Prozentualer Anteil der kantenbez. Wärmebrücken
     \end{symbols}
 \end{formelbox}
+
 
 % ==============================================================================
 % THEMA 2: WÄRMESTRAHLUNG
