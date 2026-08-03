@@ -3,10 +3,10 @@
 % ==============================================================================
 % 1. LAYOUT & GEOMETRIE
 % ==============================================================================
-\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm, headheight=40pt]{geometry}
+\usepackage[a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm, headheight=42pt]{geometry}
 \usepackage{parskip}
 \usepackage{setspace}
-\onehalfspacing
+\setstretch{1.04}
 \usepackage{multicol}
 \usepackage{enumitem}
 \setlist[itemize]{label=-, leftmargin=*, noitemsep}
@@ -17,8 +17,10 @@
 \AtBeginEnvironment{align*}{\small}
 \AtBeginEnvironment{equation}{\small}
 \AtBeginEnvironment{equation*}{\small}
-\setlength{\abovedisplayskip}{4pt}
-\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{3pt}
 \newcommand{\mysection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\mysubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 
@@ -58,7 +60,7 @@
     range-units=single
 ]{siunitx}
 
-\providecommand{\eh}[1]{\,[\unit{#1}]}
+\newcommand{\eh}[1]{\ensuremath{\,\left[\si{#1}\right]}}
 \newcommand{\gradC}{\,\eh{\degree C}}
 
 % ==============================================================================
@@ -70,22 +72,22 @@
 
 \newtcolorbox{formelbox}[1]{
     enhanced,
-    colback=white,
-    colframe=blue!35!black,
-    colbacktitle=blue!8!white,
-    coltitle=blue!85!black,
+    colback=blue!2!white,
+    colframe=blue!45!black,
+    colbacktitle=blue!55!black,
+    coltitle=white,
     fonttitle=\bfseries\sffamily\small,
     fontupper=\small,
     fontlower=\small,
     title={#1},
-    boxrule=0.8pt,
+    boxrule=0.7pt,
     arc=3pt,
-    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
     boxsep=1pt,
     toptitle=4pt, bottomtitle=4pt,
-    segmentation style={solid, draw=black!15, line width=0.4pt},
-    before skip=10pt,
-    after skip=10pt,
+    segmentation style={dashed, draw=blue!30, line width=0.4pt},
+    before skip=6pt,
+    after skip=6pt,
     unbreakable
 }
 
@@ -104,10 +106,12 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\textbf{\large HCU Hamburg}\vspace{0.1cm}}
-\rhead{\textbf{\large Bauphysik}\\Formelsammlung}
-\lfoot{Bennet Geschke}
-\rfoot{Seite \thepage}
+\fancyhead[L]{\sffamily\bfseries HCU Hamburg}
+\fancyhead[C]{\sffamily\bfseries Bauphysik Formelsammlung}
+\fancyhead[R]{\sffamily Bennet Geschke}
+\fancyfoot[L]{\sffamily Bennet Geschke}
+\fancyfoot[C]{}
+\fancyfoot[R]{\sffamily Seite \thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
@@ -126,17 +130,23 @@
     citecolor=green!60!black
 }
 
-\title{\vspace{-2cm}\textbf{\Huge Formelsammlung Bauphysik}}
-\author{Bennet Geschke}
-\date{\today}
+\newcommand{\compacttitle}{%
+    \noindent\begin{center}
+        {\sffamily\bfseries\LARGE Formelsammlung Bauphysik\par}
+        \vspace{2pt}
+        {\sffamily\small Bennet Geschke \quad $\vert$ \quad HCU Hamburg \quad $\vert$ \quad \today\par}
+    \end{center}
+    \vspace{2pt}
+    \hrule height 0.6pt
+    \vspace{0.8em}
+}
 
 \begin{document}
 
-\maketitle
-\vspace{-1.5cm}
+\compacttitle
 
 \tableofcontents
-\vspace{1cm}
+\vspace{0.5cm}
 
 
 % ==============================================================================
@@ -165,14 +175,14 @@ c_W& $J/(g\cdot K)$ & Spezif. Wärmekapazität von Wasser
 \mysubsection{1.1.1 Materialkennwerte}
 
 \begin{formelbox}{Materialkennwerte}
-    \begin{align*}
-        \rho_{Wasser} &= 1000 \eh{kg/m^3} = 1{,}00 \eh{g/cm^3} \\
-        \rho_{Luft} &= 1{,}204 \eh{kg/m^3} = 0{,}001204 \eh{g/cm^3} \\
-        c_{Wasser} &= 4{,}182 \eh{kJ/(kg K)} = 4182 \eh{J/(kg K)} \\
-        c_{Aluminium} &= 0{,}900 \eh{kJ/(kg K)} = 900 \eh{J/(kg K)} \\
-        c_{Kupfer} &= 0{,}385 \eh{kJ/(kg K)} = 385 \eh{J/(kg K)} \\
-        c_{Stahl} &= 0{,}470 \eh{kJ/(kg K)} = 470 \eh{J/(kg K)}
-    \end{align*}
+    \renewcommand{\arraystretch}{1.08}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
+        Wasser & $\rho = 1000 \eh{kg/m^3}$, $c = 4{,}182 \eh{kJ/(kg K)} = 4182 \eh{J/(kg K)}$ \\
+        Luft & $\rho = 1{,}204 \eh{kg/m^3} = 0{,}001204 \eh{g/cm^3}$ \\
+        Aluminium & $c = 0{,}900 \eh{kJ/(kg K)} = 900 \eh{J/(kg K)}$ \\
+        Kupfer & $c = 0{,}385 \eh{kJ/(kg K)} = 385 \eh{J/(kg K)}$ \\
+        Stahl & $c = 0{,}470 \eh{kJ/(kg K)} = 470 \eh{J/(kg K)}$
+    \end{tabularx}
     \tcblower
     \begin{symbols}
 \rho_{Wasser}& \eh{kg/m^3} & Dichte von Wasser bei 4\,°C \\
@@ -559,16 +569,17 @@ g& --- & Gesamtenergiedurchlassgrad des Glases ohne Sonnenschutz
 \end{formelbox}
 
 \begin{formelbox}{Sonnenschutz-Faktoren (nach Tabelle)}
-    \begin{align*}
-        \text{Innenliegend / zwischen Scheiben:} \\
-        \text{weiß/hochreflektierend} &: F_c = 0,65-0,70 \\
-        \text{helle Farben} &: F_c = 0,75-0,80 \\
-        \text{dunkle Farben} &: F_c = 0,85-0,90 \\
-        \text{Außenliegend:} \\
-        \text{Fensterläden geschlossen} &: F_c = 0,10-0,15 \\
-        \text{Jalousie 45°} &: F_c = 0,25-0,30 \\
-        \text{Markise} &: F_c = 0,25-0,30
-    \end{align*}
+    \renewcommand{\arraystretch}{1.08}
+    \begin{tabularx}{\linewidth}{@{}X r@{}}
+        \multicolumn{2}{@{}l@{}}{\textbf{Innenliegend / zwischen Scheiben}} \\
+        weiß / hochreflektierend & $F_c = 0{,}65 - 0{,}70$ \\
+        helle Farben & $F_c = 0{,}75 - 0{,}80$ \\
+        dunkle Farben & $F_c = 0{,}85 - 0{,}90$ \\
+        \multicolumn{2}{@{}l@{}}{\textbf{Außenliegend}} \\
+        Fensterläden geschlossen & $F_c = 0{,}10 - 0{,}15$ \\
+        Jalousie $45^\circ$ & $F_c = 0{,}25 - 0{,}30$ \\
+        Markise & $F_c = 0{,}25 - 0{,}30$
+    \end{tabularx}
     \tcblower
     \begin{symbols}
          F_c& --- & Abminderungsfaktor Sonnenschutz
@@ -1513,12 +1524,13 @@ y_0& \eh{m} & Amplitude \\
 \mysection{Anhang: Wichtige Konstanten}
 
 \begin{formelbox}{Physikalische Konstanten}
-    \begin{align*}
-        \sigma & = 5,67 \cdot 10^{-8} \eh{W/(m^2 K^4)} & \text{(Stefan-Boltzmann)} \\
-        R & = 8,31 \eh{J/(mol\cdot K)} & \text{(Allgemeine Gaskonstante)} \\
-        R_D & = 461,5 \eh{J/(kg\cdot K)} & \text{(Wasserdampf)} \\
-        c_W & = 4,182 \eh{J/(g\cdot K)} & \text{(Spezifische Wärmekapazität Wasser)}
-    \end{align*}
+    \renewcommand{\arraystretch}{1.08}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
+        $\sigma$ & $5{,}67 \cdot 10^{-8} \eh{W/(m^2 K^4)}$ \hfill Stefan-Boltzmann \\
+        $R$ & $8{,}31 \eh{J/(mol\cdot K)}$ \hfill Allgemeine Gaskonstante \\
+        $R_D$ & $461{,}5 \eh{J/(kg\cdot K)}$ \hfill Wasserdampf \\
+        $c_W$ & $4{,}182 \eh{J/(g\cdot K)}$ \hfill Spezifische Wärmekapazität Wasser
+    \end{tabularx}
     \tcblower
     \begin{symbols}
          \sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante \\
@@ -1529,12 +1541,13 @@ y_0& \eh{m} & Amplitude \\
 \end{formelbox}
 
 \begin{formelbox}{Wärmeübergangswiderstände}
-    \begin{align*}
-        R_{si} & = 0,10 \eh{m^2 K/W} & \text{(strömend, Wärmestrom nach oben)} \\
-        R_{si} & = 0,13 \eh{m^2 K/W} & \text{(strömend, Wärmestrom horizontal)} \\
-        R_{si} & = 0,17 \eh{m^2 K/W} & \text{(strömend, Wärmestrom nach unten)} \\
-        R_{se} & = 0,04 \eh{m^2 K/W} & \text{(außen)}
-    \end{align*}
+    \renewcommand{\arraystretch}{1.08}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
+        $R_{si} = 0{,}10 \eh{m^2 K/W}$ & strömend, Wärmestrom nach oben \\
+        $R_{si} = 0{,}13 \eh{m^2 K/W}$ & strömend, Wärmestrom horizontal \\
+        $R_{si} = 0{,}17 \eh{m^2 K/W}$ & strömend, Wärmestrom nach unten \\
+        $R_{se} = 0{,}04 \eh{m^2 K/W}$ & außen
+    \end{tabularx}
     \tcblower
     \begin{symbols}
          R_{si}& \eh{m^2 K/W} & Innenseitiger Wärmeübergangswiderstand \\
@@ -1561,13 +1574,14 @@ y_0& \eh{m} & Amplitude \\
 \mysubsection{Zeitumrechnungen}
 
 \begin{formelbox}{Zeiteinheiten und Umrechnungen}
-    \begin{align*}
-        1 \text{ Minute (min)} &= 60 \eh{s} \\
-        1 \text{ Stunde (h)} &= 60 \text{ min} = 3.600 \eh{s} \\
-        1 \text{ Tag (d)} &= 24 \text{ h} = 1.440 \text{ min} = 86.400 \eh{s} \\
-        1 \text{ Jahr (a, 365 Tage)} &= 365 \text{ d} = 8.760 \text{ h} = 525.600 \text{ min} = 31.536.000 \eh{s} \\
-        1 \text{ Schaltjahr (366 Tage)} &= 366 \text{ d} = 8.784 \text{ h} = 527.040 \text{ min} = 31.622.400 \eh{s}
-    \end{align*}
+    \renewcommand{\arraystretch}{1.08}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
+        Minute & $1\,\text{min} = 60 \eh{s}$ \\
+        Stunde & $1\,\text{h} = 60\,\text{min} = 3600 \eh{s}$ \\
+        Tag & $1\,\text{d} = 24\,\text{h} = 1440\,\text{min} = 86\,400 \eh{s}$ \\
+        Jahr (365 Tage) & $1\,\text{a} = 365\,\text{d} = 8760\,\text{h} = 525\,600\,\text{min} = 31\,536\,000 \eh{s}$ \\
+        Schaltjahr (366 Tage) & $1\,\text{a} = 366\,\text{d} = 8784\,\text{h} = 527\,040\,\text{min} = 31\,622\,400 \eh{s}$
+    \end{tabularx}
     \tcblower
     \begin{symbols}
         \text{s}& \eh{s} & Sekunde (SI-Basiseinheit) \\
