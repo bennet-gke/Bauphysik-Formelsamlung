@@ -283,15 +283,15 @@ U& \eh{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Wärmestrom durch Wand}
+\begin{formelbox}{Transmissionswärmestrom}
     \begin{align*}
-        \dot{Q} & = U \cdot A \cdot (\vartheta_{ai} - \vartheta_{ae}) \eh{W}
+        \dot{Q}_T & = U \cdot A \cdot (\vartheta_{ai} - \vartheta_{ae}) = H_T \cdot (\vartheta_{ai} - \vartheta_{ae}) \eh{W}
     \end{align*}
     \tcblower
     \begin{symbols}
-         \dot{Q}& \eh{W} & Wärmestrom \\
+         \dot{Q}_T& \eh{W} & Transmissionswärmestrom \\
          U& \eh{W/(m^2 K)} & Wärmedurchgangskoeffizient \\
-         A& \eh{m^2} & Fläche \\
+         A& \eh{m^2} & Bauteilfläche \\
          \vartheta_{ai}& \eh{K} & Innenlufttemperatur \\
          \vartheta_{ae}& \eh{K} & Außenlufttemperatur
     \end{symbols}
@@ -1545,5 +1545,30 @@ y_0& \eh{m} & Amplitude \\
          \text{(oberhalb/unterhalb Atmosphäre)}& --- & Strahlungswerte für unterschiedliche Bedingungen
     \end{symbols}
 \end{formelbox}
+
+% ==============================================================================
+% ANHANG: ZEITUMRECHNUNGEN
+% ==============================================================================
+
+\mysubsection{Zeitumrechnungen}
+
+\begin{formelbox}{Zeiteinheiten und Umrechnungen}
+    \begin{align*}
+        1 \text{ Minute (min)} &= 60 \eh{s} \\
+        1 \text{ Stunde (h)} &= 60 \text{ min} = 3.600 \eh{s} \\
+        1 \text{ Tag (d)} &= 24 \text{ h} = 1.440 \text{ min} = 86.400 \eh{s} \\
+        1 \text{ Jahr (a, 365 Tage)} &= 365 \text{ d} = 8.760 \text{ h} = 525.600 \text{ min} = 31.536.000 \eh{s} \\
+        1 \text{ Schaltjahr (366 Tage)} &= 366 \text{ d} = 8.784 \text{ h} = 527.040 \text{ min} = 31.622.400 \eh{s}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        \text{s}& \eh{s} & Sekunde (SI-Basiseinheit) \\
+        \text{min}& \eh{min} & Minute \\
+        \text{h}& \eh{h} & Stunde \\
+        \text{d}& \eh{d} & Tag (day) \\
+        \text{a}& \eh{a} & Jahr (annum)
+    \end{symbols}
+\end{formelbox}
+
 
 \end{document}
