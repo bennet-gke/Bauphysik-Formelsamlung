@@ -418,32 +418,24 @@ U_m& \eh{W/(m^2 K)} & Mittlerer Wärmedurchgangskoeffizient
 
 
 % ==============================================================================
-% THEMA 2: WÄRMESTRAHLUNG
+% THEMA 2: WÄRMESTRAHLUNG & KOLLEKTORBALANZEN
 % ==============================================================================
 
 \mysection{2. Wärmestrahlung}
 
-\mysubsection{2.1 Grundlagen der Strahlung}
+\mysubsection{2.1 Grundlagen der Strahlung \& Bilanzen}
 
-\begin{formelbox}{Stefan-Boltzmann-Gesetz (schwarzer Körper)}
+\begin{formelbox}{Stefan-Boltzmann-Gesetz}
     \begin{align*}
-        q & = \sigma \cdot T^4 \\
-        \sigma & = 5,67 \cdot 10^{-8} \eh{W/(m^2 K^4)}
+        q & = \sigma \cdot T^4 \quad \text{(schwarzer Körper)} \\
+        q & = \sigma \cdot \epsilon \cdot T^4 \quad \text{(nicht-schwarzer Körper)} \\
+        \sigma & = 5,6704 \cdot 10^{-8} \eh{W/(m^2 K^4)}
     \end{align*}
     \tcblower
     \begin{symbols}
-q& \eh{W/m^2} & Abgestrahlte Intensität \\
-\sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante
-    \end{symbols}
-\end{formelbox}
-
-\begin{formelbox}{Stefan-Boltzmann-Gesetz (nicht-schwarzer Körper)}
-    \begin{align*}
-        q & = \sigma \cdot \epsilon \cdot T^4
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-\epsilon& --- & Emissionsgrad ($\epsilon < 1$ für nicht-schwarze Körper)
+q& \eh{W/m^2} & Abgestrahlte Intensität / Wärmestromdichte \\
+\sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante \\
+\epsilon& --- & Emissionsgrad ($\epsilon = 1$ für schwarzen Körper)
     \end{symbols}
 \end{formelbox}
 
@@ -457,204 +449,372 @@ q& \eh{W/m^2} & Abgestrahlte Intensität \\
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Absorptions-, Emissions-, Reflexions- \& Transmissionsgrad, Transmissionswärmeverlust}
+\begin{formelbox}{Absorptions-, Emissions-, Reflexions- \& Transmissionsgrad}
     \begin{align*}
-        \alpha & = \frac{I_A}{I}, \quad \rho = \frac{I_R}{I}, \quad \tau = \frac{I_T}{I} \\
-        \alpha & = \epsilon \quad \text{(Kirchhoff'sches Gesetz)} \\[1em]
-        H & = \sum_{i} U_i \cdot A_i \\
-        U_m & = \frac{H}{A_{\text{ges}}} = \frac{\sum_{i} U_i \cdot A_i}{A_{\text{ges}}}
+        \alpha & = \frac{I_A}{I}, \quad \rho = \frac{I_R}{I}, \quad \tau = \frac{I_T}{I} \\[0.5em]
+        \alpha + \rho + \tau & = 1 \quad \text{(Strahlungsbilanz)} \\[0.5em]
+        \alpha & = \epsilon \quad \text{(Kirchhoff'sches Gesetz)}
     \end{align*}
     \tcblower
     \begin{symbols}
         \alpha & --- & Absorptionsgrad \\
         \rho & --- & Reflexionsgrad \\
         \tau & --- & Transmissionsgrad \\
-        \epsilon & --- & Emissionsgrad \\
-        H & \text{W/K} & Spezifischer Transmissionswärmeverlust \\
-        U_m & \text{W/(m$^2$K)} & Mittlerer U-Wert \\
-        U_i & \text{W/(m$^2$K)} & Wärmedurchgangskoeffizient des Teilbauteils $i$ \\
-        A_i & \text{m$^2$} & Fläche des Teilbauteils $i$ \\
-        A_{\text{ges}} & \text{m$^2$} & Gesamte Hüllfläche
+        \epsilon & --- & Emissionsgrad
     \end{symbols}
 \end{formelbox}
 
-\mysubsection{2.2 Strahlungsaustausch}
+\begin{formelbox}{Einstrahlung, Energie \& Aufheizung}
+    \begin{align*}
+        q_{\text{abs}} & = \tau \cdot \alpha \cdot q_{\text{Sonne}} \quad \text{(ohne Glas: } \tau = 1\text{)} \\[0.5em]
+        Q & = q \cdot A \cdot t \\[0.5em]
+        Q & = m \cdot c \cdot \Delta T \quad \implies \quad \Delta T = \frac{Q}{m \cdot c}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        q_{\text{abs}} & \eh{W/m^2} & Absorbierte Strahlungsintensität \\
+        q_{\text{Sonne}} & \eh{W/m^2} & Solare Strahlungsintensität \\
+        Q & \eh{J} & Wärmeenergie \\
+        m & \eh{kg} & Masse ($m = \rho \cdot V = \rho \cdot A \cdot d$) \\
+        c & \eh{J/(kg K)} & Spezifische Wärmekapazität
+    \end{symbols}
+\end{formelbox}
+
+\mysubsection{2.2 Strahlungsaustausch \& Kollektorberechnung}
 
 \begin{formelbox}{Strahlungsaustausch planparalleler Flächen}
     \begin{align*}
-        q & = \sigma \cdot \epsilon_{pp} \cdot (T_1^4 - T_2^4) \\
+        q_r & = \sigma \cdot \epsilon_{pp} \cdot (T_1^4 - T_2^4) \quad \text{mit } T_1 > T_2 \\[0.5em]
         \epsilon_{pp} & = \frac{1}{\frac{1}{\epsilon_1} + \frac{1}{\epsilon_2} - 1}
     \end{align*}
+    {\small\textit{Merke:}} Für Austausch mit idealer Umgebung ($\epsilon_2 = 1$) gilt $\epsilon_{pp} = \epsilon_1$.
     \tcblower
     \begin{symbols}
-q& \eh{W/m^2} & Austausch-Wärmestromdichte \\
-\epsilon_{pp}& --- & Gemeinsamer Emissionsgrad (gilt für unendlich ausgedehnte planparallele Oberflächen)
+q_r & \eh{W/m^2} & Austausch-Wärmestromdichte (Verlust durch Strahlung) \\
+\epsilon_{pp} & --- & Gemeinsamer Emissionsgrad \\
+T_1, T_2 & \eh{K} & Temperaturen der beteiligten Flächen
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Wärmestrahlung Einzelfläche}
+\begin{formelbox}{Solarkollektor: Bilanz, Nutzleistung \& Wirkungsgrad}
     \begin{align*}
-        q_{10} & = \sigma \cdot \epsilon_i \cdot T_i^4 \\
-        \epsilon_i & = 1 - \rho_i
+        q_{\text{netto}} & = q_{\text{abs}} - q_r \\[0.5em]
+        P_{\text{Nutz}} & = \dot{Q}_{\text{Nutz}} = q_{\text{netto}} \cdot S = \dot{m} \cdot c_w \cdot \Delta T_{\text{Wasser}} \\[0.5em]
+        \eta & = \frac{P_{\text{Nutz}}}{P_{\text{gesamt}}} = \frac{\dot{Q}_{\text{Nutz}}}{q_{\text{Sonne}} \cdot S}
     \end{align*}
     \tcblower
     \begin{symbols}
-         q_{10}& \eh{W/m^2} & Wärmestrahlungsdichte der Einzelfläche \\
-         \sigma& \eh{W/(m^2 K^4)} & Stefan-Boltzmann-Konstante \\
-         \epsilon_i& --- & Emissionsgrad der Fläche \\
-         T_i& \eh{K} & Temperatur der Fläche \\
-         \rho_i& --- & Reflexionsgrad der Fläche
+        q_{\text{netto}} & \eh{W/m^2} & Nettogewinn pro Flächeneinheit \\
+        P_{\text{Nutz}}, \dot{Q}_{\text{Nutz}} & \eh{W} & Gesamte Nutzleistung / Nutzwärmestrom \\
+        S & \eh{m^2} & Kollektorfläche \\
+        \dot{m} & \eh{kg/s} & Massenstrom des Heizwassers ($\dot{m} = \rho \cdot \dot{V}$) \\
+        \eta & --- & Thermischer Wirkungsgrad
     \end{symbols}
 \end{formelbox}
 
-\begin{formelbox}{Solarkonstante}
+
+\begin{formelbox}{Wärmestrahlung Einzelfläche \& Solarkonstante}
     \begin{align*}
+        q_{10} & = \sigma \cdot \epsilon_i \cdot T_i^4 \quad \text{mit } \epsilon_i = 1 - \rho_i \\[0.5em]
         q_{max} & = 1,3 \eh{kW/m^2} \quad \text{(oberhalb Atmosphäre)} \\
         q_{max} & = 1,0 \eh{kW/m^2} \quad \text{(unterhalb Atmosphäre)}
     \end{align*}
     \tcblower
     \begin{symbols}
-         q_{max}& \eh{kW/m^2} & Maximaler globaler Strahlungsfluss \\
-         \text{(oft auch } G_{max} \text{)}& --- & Solarkonstante
+         q_{10}& \eh{W/m^2} & Wärmestrahlungsdichte der Einzelfläche \\
+         q_{max}& \eh{kW/m^2} & Maximaler globaler Strahlungsfluss ($G_{max}$)
     \end{symbols}
 \end{formelbox}
+
+
 
 % ==============================================================================
-% THEMA 3: SOLARE GEWINNE UND WÄRMESCHUTZ
+% THEMA 3: SOLARE GEWINNE, SOMMERLICHER WÄRMESCHUTZ UND SOLARTHERMIE
 % ==============================================================================
 
-\mysection{3. Solarer Wärmeschutz}
+\mysection{3. Solare Gewinne \& Sommerlicher Wärmeschutz}
 
-\mysubsection{3.1 Kenngrößen für Fenster}
+% ------------------------------------------------------------------------------
+% KOMPAKTE EIN-SEITEN-FASSUNG: SOMMERLICHER WÄRMESCHUTZ (DIN 4108-2)
+% ------------------------------------------------------------------------------
+{\tiny
+\renewcommand{\arraystretch}{0.85}
+\setlength{\tabcolsep}{2pt}
 
-\begin{formelbox}{Gesamtenergiedurchlassgrad g}
-    Typische Werte (DIN 4108-4):
-    \begin{align*}
-        \text{Einfachverglasung} & : g = 0,87 \\
-        \text{Doppelverglasung} & : g = 0,78 \\
-        \text{Wärmeschutzglas (selektiv)} & : g = 0,50 - 0,70 \\
-        \text{Dreifachverglasung normal} & : g = 0,60 - 0,70 \\
-        \text{Dreifachverglasung (2x selektiv)} & : g = 0,35 - 0,50 \\
-        \text{Sonnenschutzglas} & : g = 0,20 - 0,50
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-         g& --- & Gesamtenergiedurchlassgrad
-    \end{symbols}
-\end{formelbox}
+\mysubsection{3.1 Sommerlicher Wärmeschutz (DIN 4108-2 Nachweis)}
 
-\begin{formelbox}{Lichttransmissionsgrad}
-    \begin{align*}
-        \tau_r & \text{(Richtwerte)} \\
-        \text{Einfachglas} & : \tau_r = 0,90 \\
-        \text{Zweifachglas ohne Beschichtung} & : \tau_r = 0,82 \\
-        \text{Dreifachglas ohne Beschichtung} & : \tau_r = 0,75 \\
-        \text{Wärmedämmglas 2-fach} & : \tau_r = 0,60 - 0,78
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-         \tau_r& --- & Lichttransmissionsgrad
-    \end{symbols}
-\end{formelbox}
-
-\begin{formelbox}{Abminderungsfaktor Sonnenschutz}
-    \begin{align*}
-        F_c & = \frac{g_{tot}}{g}
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-g_{tot}& --- & Tatsächlicher Gesamtenergiedurchlassgrad mit Sonnenschutz \\
-g& --- & Gesamtenergiedurchlassgrad des Glases ohne Sonnenschutz
-    \end{symbols}
-\end{formelbox}
-
-\begin{formelbox}{Sonnenschutz-Faktoren (nach Tabelle)}
-    \renewcommand{\arraystretch}{1.08}
-    \begin{tabularx}{\linewidth}{@{}X r@{}}
-        \multicolumn{2}{@{}l@{}}{\textbf{Innenliegend / zwischen Scheiben}} \\
-        weiß / hochreflektierend & $F_c = 0{,}65 - 0{,}70$ \\
-        helle Farben & $F_c = 0{,}75 - 0{,}80$ \\
-        dunkle Farben & $F_c = 0{,}85 - 0{,}90$ \\
-        \multicolumn{2}{@{}l@{}}{\textbf{Außenliegend}} \\
-        Fensterläden geschlossen & $F_c = 0{,}10 - 0{,}15$ \\
-        Jalousie $45^\circ$ & $F_c = 0{,}25 - 0{,}30$ \\
-        Markise & $F_c = 0{,}25 - 0{,}30$
+\begin{formelbox}{1. Bagatellbedingung \& Grundfläche $A_g$}
+    \textbf{Nachweisfrei wenn:} $f_{WG} \le f_{WG,\text{erf}}$ \quad mit \quad $f_{WG} = \frac{A_f}{A_g} \cdot 100\,\%$ \\
+    \textbf{Grundfläche $A_g$:} $A_g = b_{\text{Raum}} \cdot \min(d_{\text{Raum}},\, 3 \cdot h)$ \quad (Tiefe $> 3h$ entfällt)
+    
+    \vspace{1mm}
+    \textbf{Tabelle 6 — Zulässige Werte für $f_{WG,\text{erf}}$ [\%] (Nachweisfreiheit)}
+    \begin{tabularx}{\linewidth}{@{}c l X c@{}}
+        \hline
+        \textbf{Zeile} & \textbf{Neigung} & \textbf{Orientierung} & \textbf{$f_{WG}$ [\%]} \\
+        \hline
+        1 & $> 60^\circ$ bis $90^\circ$ & Nordwest- über Süd bis Nordost & 10 \\
+        2 & $> 60^\circ$ bis $90^\circ$ & Alle anderen Nordorientierungen & 15 \\
+        3 & $0^\circ$ bis $60^\circ$ & Alle Orientierungen & 7 \\
+        \hline
     \end{tabularx}
-    \tcblower
-    \begin{symbols}
-         F_c& --- & Abminderungsfaktor Sonnenschutz
-    \end{symbols}
 \end{formelbox}
 
-\mysubsection{3.2 Sonneneintragskennwert}
-
-\begin{formelbox}{Vorhandener Sonneneintragskennwert S}
+\begin{formelbox}{2. Vorhandener Sonneneintragskennwert $S_{\text{vorh}}$}
     \begin{align*}
-        S_{vorh} & = \frac{\sum_{j=1}^{N} A_{w,j} \cdot g_{i,j} \cdot F_{C,j}}{A_G}
+        S_{\text{vorh}} = \frac{\sum \left(A_{f,j} \cdot g_j \cdot F_{c,j}\right)}{A_g}
     \end{align*}
-    \tcblower
-    \begin{symbols}
-A_w& \eh{m^2} & Fensterfläche (lichte Rohbaumaße) \\
-g& --- & Gesamtenergiedurchlassgrad \\
-F_C& --- & Abminderungsfaktor Sonnenschutz \\
-A_G& \eh{m^2} & Grundfläche (lichte Rohbaumaße) \\
-N& --- & Anzahl der Seitenwände (meist 4)
-    \end{symbols}
+    
+    {\tiny \textbf{Tabelle 10 — Glaswerte ($g$, $\tau_v$):} Einfach ($g=0{,}87$); 2-fach o.\,B. ($g=0{,}78$); 3-fach o.\,B. ($g=0{,}70$); Wärmedämmglas 2-fach m. Argon ($g=0{,}67 - 0{,}72$).}
+    
+    \vspace{1.5mm}
+    \textbf{\tiny Tabelle 7 — Anhaltswerte Abminderungsfaktoren $F_c$}
+    
+    {\tiny
+    \renewcommand{\arraystretch}{0.9}
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabularx}{\linewidth}{|l|>{\raggedright\arraybackslash}X|c|c|}
+        \hline
+        \textbf{Zeile} & \textbf{Sonnenschutzvorrichtung} & $\boldsymbol{g \le 0{,}40}$ & $\boldsymbol{g > 0{,}40}$ \\
+        \hline
+        1 & Ohne Sonnenschutzvorrichtung & 1,00 & 1,00 \\
+        \hline
+        \textbf{2} & \textbf{Innenliegend / zwischen Scheiben} & & \\
+        \hline
+        2.1 & Weiß / hochreflektierend, geringe Transparenz & 0,65 & 0,75 (3f: 0,70) \\
+        \hline
+        2.2 & Helle Farben / geringe Transparenz & 0,75 & 0,80 (3f: 0,75) \\
+        \hline
+        2.3 & Dunkle Farben / höhere Transparenz & 0,90 & 0,90 (3f: 0,85) \\
+        \hline
+        \textbf{3} & \textbf{Außenliegend} & & \\
+        \hline
+        3.1.1 & Rolladen / Fensterladen, $\frac{3}{4}$ geschlossen & 0,35 & 0,30 \\
+        \hline
+        3.1.2 & Rolladen / Fensterladen, ganz geschlossen & 0,15 & 0,10 \\
+        \hline
+        3.2.1 & Jalousie/Raffstore, Lamelle $45^\circ$ & 0,30 & 0,25 \\
+        \hline
+        3.2.2 & Jalousie/Raffstore, Lamelle $10^\circ$ & 0,20 & 0,15 \\
+        \hline
+        3.3 & Markise parallel zur Verglasung & 0,30 & 0,25 \\
+        \hline
+        3.4 & Vordächer, Markisen allg., freistehend & 0,55 & 0,50 \\
+        \hline
+    \end{tabularx}
+    }
 \end{formelbox}
 
-\begin{formelbox}{Zulässiger Sonneneintragskennwert S}
+\begin{formelbox}{3. Zulässiger Sonneneintragskennwert $S_{\text{zul}}$ \& Nachweis}
     \begin{align*}
-        S_{zul} & = \sum_{i=1}^{6} S_i
+        S_{\text{zul}} = s_1 + s_2 + s_3 + s_4 + s_5 + s_6 \quad \implies \quad \text{\textbf{Nachweis: }} S_{\text{vorh}} \le S_{\text{zul}}
     \end{align*}
-    \tcblower
-    \begin{symbols}
-S_1& --- & Nachtlüftung und Bauart \\
-S_2& --- & Fensteranteil \\
-S_3& --- & Sonnenschutzglas \\
-S_4& --- & Fensterneigung \\
-S_5& --- & Orientierung \\
-S_6& --- & Einsatz passiver Kühlung
-    \end{symbols}
+    
+    \textbf{\tiny Tabelle 8 — Anteile $s_1$ (Klimaregion A, B, C \& Bauart)}
+    
+    {\tiny
+    \renewcommand{\arraystretch}{0.9}
+    \setlength{\tabcolsep}{1.5pt}
+    \begin{tabularx}{\linewidth}{|l|l|*{6}{c|}}
+        \hline
+        & & \multicolumn{3}{c}{\textbf{Wohngebäude}} & \multicolumn{3}{c}{\textbf{Nichtwohngebäude}} \\
+        \hline
+        \textbf{Nachtlüftung} & \textbf{Bauart} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\
+        \hline
+        ohne & leicht & 0,071 & 0,056 & 0,041 & 0,013 & 0,007 & 0,000 \\
+        \hline
+        & mittel & 0,080 & 0,067 & 0,054 & 0,020 & 0,013 & 0,006 \\
+        \hline
+        & schwer & 0,087 & 0,074 & 0,061 & 0,025 & 0,018 & 0,011 \\
+        \hline
+        erhöht ($\ge 2\,\text{h}^{-1}$) & leicht & 0,098 & 0,088 & 0,078 & 0,071 & 0,060 & 0,048 \\
+        \hline
+        & mittel & 0,114 & 0,103 & 0,092 & 0,089 & 0,081 & 0,072 \\
+        \hline
+        & schwer & 0,125 & 0,113 & 0,101 & 0,101 & 0,092 & 0,083 \\
+        \hline
+        hohe ($\ge 5\,\text{h}^{-1}$) & leicht & 0,128 & 0,117 & 0,105 & 0,090 & 0,082 & 0,074 \\
+        \hline
+        & mittel & 0,160 & 0,152 & 0,143 & 0,135 & 0,124 & 0,113 \\
+        \hline
+        & schwer & 0,181 & 0,171 & 0,160 & 0,170 & 0,158 & 0,145 \\
+        \hline
+    \end{tabularx}
+    }
+
+    \vspace{1.5mm}
+    \textbf{\tiny Weitere Anteile $s_2$ bis $s_6$ (Tabelle 8 u. Formeln)}
+    
+    {\tiny
+    \renewcommand{\arraystretch}{0.9}
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabularx}{\linewidth}{|l|>{\raggedright\arraybackslash}X|r|}
+        \hline
+        \textbf{Kennwert} & \textbf{Beschreibung / Formel} & \textbf{Wert} \\
+        \hline
+        $s_2$ (Fensterant.) & $s_2 = a - b \cdot f_{WG}$ \quad (Wohn: $a=0{,}060, b=0{,}231$; NWG: $a=0{,}030, b=0{,}115$) & Var. \\
+        \hline
+        $s_3$ (Sonnenschutz) & Für Fenster mit Sonnenschutzglas ($g \le 0{,}40$) & $+0{,}03$ \\
+        \hline
+        $s_4$ (Neigung) & $-0{,}035 \cdot f_{\text{neig}}$ \quad ($f_{\text{neig}} = A_{W,\text{neig}} / A_W$ für Neigung $\le 60^\circ$) & Var. \\
+        \hline
+        $s_5$ (Orientierung) & $+0{,}10 \cdot f_{\text{nord}}$ \quad ($f_{\text{nord}} = A_{W,\text{nord}} / A_W$ für N, NO, NW / Schatten) & Var. \\
+        \hline
+        $s_6$ (Pass. Kühl.) & Leicht: $0{,}02$ \textbar{} Mittel: $0{,}04$ \textbar{} Schwer: $0{,}06$ & Var. \\
+        \hline
+    \end{tabularx}
+    }
 \end{formelbox}
 
-\begin{formelbox}{Fensteranteil $S_2$}
-    \begin{align*}
-        S_2 & = a - b \cdot f_{WG} \\
-        f_{WG} & = \frac{A_W}{A_G}
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-a& --- & Wohngebäude: $0,060$; Nichtwohngebäude: $0,030$ \\
-b& --- & Wohngebäude: $0,231$; Nichtwohngebäude: $0,115$
-    \end{symbols}
-\end{formelbox}
+% ------------------------------------------------------------------------------
+% ENDE DES KOMPAKTEN TEILS
+% ------------------------------------------------------------------------------
 
-\begin{formelbox}{Bagatellbedingung}
-    \begin{align*}
-        f_{WG} & \leq \text{erf. } f_{WG}
-    \end{align*}
-    \tcblower
-    \begin{symbols}
-         f_{WG}& --- & Fensterflächenanteil
-    \end{symbols}
-\end{formelbox}
+
+% ------------------------------------------------------------------------------
+% AB HIER NORMALGRÖSSE FÜR REICHHALTIGE THEMEN
+% ------------------------------------------------------------------------------
+
+\mysubsection{3.2 Instationäre Wärmeleitung \& Speicherverhalten}
 
 \begin{formelbox}{Effektive Wärmespeicherkapazität}
     \begin{align*}
-        C_{wirk} & = \sum_i m_i \cdot c_i = \sum_i \rho_i \cdot d_i \cdot A_i \cdot c_i
+        C_{\text{wirk}} & = \sum_i m_i \cdot c_i = \sum_i \rho_i \cdot d_i \cdot A_i \cdot c_i
     \end{align*}
     \tcblower
     \begin{symbols}
-C_{wirk}& \eh{Wh/K} & Effektive Wärmespeicherkapazität \\
-\rho_i& \eh{kg/m^3} & Rohdichte der Schicht \\
-d_i& \eh{m} & Schichtdicke \\
-A_i& \eh{m^2} & Fläche der Schicht \\
-c_i& \eh{Wh/(kg\cdot K)} & Spezifische Wärmekapazität
+        C_{\text{wirk}} & \eh{Wh/K} & Effektive Wärmespeicherkapazität \\
+        \rho_i & \eh{kg/m^3} & Rohdichte der Schicht \\
+        d_i & \eh{m} & Schichtdicke \\
+        A_i & \eh{m^2} & Fläche der Schicht \\
+        c_i & \eh{Wh/(kg\cdot K)} & Spezifische Wärmekapazität
     \end{symbols}
     \begin{itemize}
-        \item Mittlere Bauart: $50 \leq C_{wirk}/A_G \leq 130$ \eh{Wh/(K\cdot m^2)}
+        \item Mittlere Bauart: $50 \leq C_{\text{wirk}}/A_g \leq 130$ \eh{Wh/(K\cdot m^2)}
     \end{itemize}
 \end{formelbox}
+
+\begin{formelbox}{Wärmespeicherwert \& Akkumulierte Energie}
+    \begin{align*}
+        W & = \frac{\rho \cdot V \cdot c}{A} = \rho \cdot d \cdot c \\
+        \frac{E}{A} & = W \cdot \Delta T \quad \text{mit} \quad \Delta T = \theta_{\text{mitte}} - \theta_e
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        W & \eh{J/(m^2\cdot K)} & Wärmespeicherwert eines Bauteils \\
+        E/A & \eh{J/m^2} & Gespeicherte Energie pro Flächeneinheit \\
+        \rho & \eh{kg/m^3} & Rohdichte des Baustoffs \\
+        c & \eh{J/(kg\cdot K)} & Spezifische Wärmekapazität \\
+        d & \eh{m} & Bauteildicke
+    \end{symbols}
+\end{formelbox}
+
+\begin{formelbox}{Temperatur-Amplituden-Verhältnis (TAV) \& Phasenverschiebung}
+    \begin{align*}
+        a & = \frac{\lambda}{\rho \cdot c} \quad \text{(Temperaturleitfähigkeit)} \\
+        \Delta\phi & = \frac{d}{\sqrt{a}} \cdot \sqrt{\frac{\pi}{T}} \quad \text{mit } T = 24\text{ h} = 86400\text{ s} \\
+        \text{TAV} & = 2 \cdot e^{-\Delta\phi} \\
+        \Delta t & = \frac{\Delta\phi}{2\cdot\pi} \cdot T \quad \text{(Zeitverschiebung in Stunden)}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        a & \eh{m^2/s} & Temperaturleitfähigkeit des Baustoffs \\
+        \lambda & \eh{W/(m\cdot K)} & Wärmeleitfähigkeit \\
+        \Delta\phi & --- & Phasenverschiebung (in Radian) \\
+        \Delta t & \eh{h} & Phasenverschiebung / Zeitverzögerung \\
+        \text{TAV} & --- & Dämpfung der Temperaturschwankung
+    \end{symbols}
+\end{formelbox}
+
+\begin{formelbox}{Zeitkonstante $\tau$ und Halbwertszeit $t_{1/2}$}
+    \textbf{Modell 1: Wärmespeicher + Wärmeleiter} (z.\,B. Luftspeicher + Außenwand):
+    \begin{align*}
+        \tau & = \frac{\rho \cdot V \cdot c \cdot d}{\lambda \cdot A} = \frac{W}{U} = W \cdot R_T \\
+        t_{1/2} & = \ln(2) \cdot \tau \approx 0{,}693 \cdot \frac{W}{U}
+    \end{align*}
+    \textbf{Modell 2: Wärmespeicher = Wärmeleiter} (homogene Wand):
+    \begin{align*}
+        \tau & = \frac{1}{2} \cdot \frac{W}{U} = \frac{1}{2} \cdot W \cdot R_T \\
+        t_{1/2} & = \ln(2) \cdot \tau \approx 0{,}347 \cdot \frac{W}{U}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        \tau & \eh{s} & Zeitkonstante des Erwärmungs-/Abkühlvorgangs \\
+        t_{1/2} & \eh{s} & Halbwertszeit \\
+        U & \eh{W/(m^2\cdot K)} & Wärmedurchgangskoeffizient \\
+        R_T & \eh{(m^2\cdot K)/W} & Wärmedurchgangswiderstand
+    \end{symbols}
+\end{formelbox}
+
+\mysubsection{3.3 Lüftungswärmeverluste}
+
+\begin{formelbox}{Lüftungswärmeverlust $H_V$ und $Q_V$}
+    \begin{align*}
+        n_L & = \frac{\dot{V}}{V} = \frac{1}{t_L} \\
+        H_V & = c_p \cdot \rho_{\text{Luft}} \cdot n_L \cdot V \approx 0{,}34 \left[\frac{\text{Wh}}{\text{m}^3\cdot\text{K}}\right] \cdot n_L \cdot V \\
+        Q_V & = H_V \cdot (\theta_i - \theta_e)
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        H_V & \eh{W/K} & Spezifischer Lüftungswärmeverlust \\
+        Q_V & \eh{W} & Lüftungswärmeverlustleistung \\
+        n_L & \eh{1/h} & Luftwechselzahl \\
+        V & \eh{m^3} & Raumvolumen \\
+        \dot{V} & \eh{m^3/h} & Volumenstrom der Luft \\
+        \theta_i, \theta_e & \eh{^\circ C} & Innen- und Außentemperatur
+    \end{symbols}
+\end{formelbox}
+
+\mysubsection{3.4 Solarthermie \& Kollektoren}
+
+\begin{formelbox}{Kollektor-Wärmebilanz \& Nutzwärme}
+    \begin{align*}
+        \Delta T_{\text{Kollektor}} & = 0{,}5 \cdot (T_{c,\text{in}} + T_{c,\text{out}}) - T_a \\
+        \dot{Q} & = \dot{m} \cdot c \cdot (T_{c,\text{out}} - T_{c,\text{in}})
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        \dot{Q} & \eh{W} & Thermische Nutzleistung des Kollektors \\
+        \dot{m} & \eh{kg/s} & Massenstrom des Wärmeträgermediums \\
+        c & \eh{J/(kg\cdot K)} & Spezifische Wärmekapazität des Mediums \\
+        T_{c,\text{in}} & \eh{K} & Vorlauftemperatur (Eintritt in Kollektor) \\
+        T_{c,\text{out}} & \eh{K} & Rücklauftemperatur (Austritt aus Kollektor) \\
+        T_a & \eh{K} & Umgebungstemperatur / Außentemperatur
+    \end{symbols}
+\end{formelbox}
+
+\begin{formelbox}{Kollektorwirkungsgrad $\eta$}
+    \begin{align*}
+        \eta & = \frac{\dot{Q}}{G \cdot A} \\
+        \eta & = \eta_0 - \frac{\alpha_1 \cdot \Delta T}{G} - \frac{\alpha_2 \cdot \Delta T^2}{G}
+    \end{align*}
+    \tcblower
+    \begin{symbols}
+        \eta & --- & Gesamtwirkungsgrad des Kollektors \\
+        \eta_0 & --- & Optischer Wirkungsgrad (Konversionsfaktor bei $\Delta T = 0$) \\
+        G & \eh{W/m^2} & Solare Einstrahlungsintensität auf Aperturfläche \\
+        A & \eh{m^2} & Kollektor-Aperturfläche \\
+        \alpha_1 & \eh{W/(m^2\cdot K)} & Einfacher (linearer) Wärmeverlustbeiwert \\
+        \alpha_2 & \eh{W/(m^2\cdot K^2)} & Quadratischer Wärmeverlustbeiwert (Strahlung)
+    \end{symbols}
+\end{formelbox}
+
+\begin{formelbox}{Kennwerte von Kollektor-Bauarten (Typische Richtwerte)}
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\linewidth}{@{}X c c c@{}}
+        \textbf{Bauart} & $\boldsymbol{\eta_0}$ & $\boldsymbol{\alpha_1 \text{ [W/(m$^2$K)]}}$ & $\boldsymbol{\alpha_2 \text{ [W/(m$^2$K$^2$)]}}$ \\
+        \hline
+        Freiliegender Absorber & $0{,}85$ & $22{,}0$ & $0{,}070$ \\
+        Flachkollektor & $0{,}83$ & $3{,}1$ & $0{,}020$ \\
+        Vakuumröhre (ohne Reflektor) & $0{,}79$ & $1{,}4$ & $0{,}002$ \\
+        CPC-Vakuumröhre (mit Reflektor) & $0{,}67$ & $0{,}9$ & $0{,}002$
+    \end{tabularx}
+    \tcblower
+    \textit{Hinweis:} Werte beziehen sich auf die Aperturfläche des Kollektors.
+\end{formelbox}
+
+
+
 
 % ==============================================================================
 % THEMA 4: FEUCHTE UND TAUPUNKT
